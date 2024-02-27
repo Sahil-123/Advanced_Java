@@ -238,7 +238,7 @@ public class EqualityContractExamples {
     }
 
     public static void main(String[] args) {
-//        employeeDepartment();
+        employeeDepartment();
 //        customerOrder();
 //        studentSchool();
 //        libraryBook();
