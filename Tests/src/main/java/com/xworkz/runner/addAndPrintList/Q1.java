@@ -12,6 +12,10 @@ public class Q1 {
         list.add("sahil");
         list.add("nandish");
 
-        list.forEach(System.out::println);
+//        list.forEach(System.out::println);
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 }

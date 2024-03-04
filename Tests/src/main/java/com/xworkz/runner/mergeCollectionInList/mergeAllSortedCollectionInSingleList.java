@@ -28,7 +28,7 @@ public class mergeAllSortedCollectionInSingleList {
         mergedList.addAll(set.stream().sorted().collect(Collectors.toList()));
         mergedList.addAll(list.stream().sorted().collect(Collectors.toList()));
 
-        mergedList.forEach(System.out::println);
+        mergedList.stream().sorted().forEach(System.out::println);
 
     }
 }
