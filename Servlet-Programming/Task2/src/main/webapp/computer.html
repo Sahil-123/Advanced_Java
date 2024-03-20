@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>Form</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Mash</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Forms
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="computer.html">Computer</a>
+                                <!-- <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a> -->
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center"">
+
+        <form action="computerForm" method="POST" class="shadow-lg p-3 mb-5 bg-body rounded " style="width: 60%; margin-top: 20px; margin-bottom: 10px; padding: 20px;">
+
+            <div class="mb-3">
+                <label for="Brand" class="form-label">Brand</label>
+
+                <select class="form-select" aria-label="Default select example" id="Brand" name="brand">
+                    <option selected value="0">Open this select menu</option>
+                    <option>Apple</option>
+                    <option>Dell</option>
+                    <option>HP (Hewlett-Packard)</option>
+                    <option>Lenovo</option>
+                    <option>Asus</option>
+                    <option>Acer</option>
+                    <option>Microsoft</option>
+                    <option>Samsung</option>
+                    <option>MSI</option>
+                    <option>Toshiba</option>
+                    <option>Sony</option>
+                    <option>Huawei</option>
+                    <option>LG</option>
+                    <option>Panasonic</option>
+                    <option>Fujitsu</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="Model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="Model" name="model">
+            </div>
+
+            <div class="mb-3">
+                <label for="Color" class="form-label">Color</label>
+
+                <select class="form-select" aria-label="Default select example" id="Color" name="color">
+                    <option selected value="0">Open this select menu</option>
+                    <option>Black</option>
+                    <option>Silver</option>
+                    <option>White</option>
+                    <option>Gray</option>
+                    <option>Blue</option>
+                    <option>Red</option>
+                    <option>Green</option>
+                    <option>Gold</option>
+                    <option>Pink</option>
+                    <option>Yellow</option>
+                    <option>Orange</option>
+                    <option>Purple</option>
+                    <option>Brown</option>
+                    <option>Beige</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="ComputerType" class="form-label">Computer Type</label>
+
+                <select class="form-select" aria-label="Default select example" id="ComputerType" name="computer_type">
+                    <option selected value="0">Open this select menu</option>
+                    <option>Laptop</option>
+                    <option>Desktop</option>
+                    <option>All-in-One PC</option>
+                    <option>Workstation</option>
+                    <option>Gaming PC</option>
+                    <option>Mini PC</option>
+                    <option>Chromebook</option>
+                    <option>2-in-1 Convertible</option>
+                    <option>Tablet</option>
+                    <option>Server</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="RamSize" class="form-label">RAM Size</label>
+
+                <select class="form-select" aria-label="Default select example" id="RamSize" name="ram_size">
+                    <option selected value="0">Open this select menu</option>
+                    <option>2 GB</option>
+                    <option>4 GB</option>
+                    <option>8 GB</option>
+                    <option>16 GB</option>
+                    <option>32 GB</option>
+                    <option>64 GB</option>
+                    <option>128 GB</option>
+                    <option>256 GB</option>
+                    <option>512 GB</option>
+                    <option>1 TB</option>
+                    <option>2 TB</option>
+                    <option>4 TB</option>
+                    <option>8 TB</option>
+                    <option>16 TB</option>
+                    <option>32 TB</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="HardDiskSize" class="form-label">Hard Disk Size</label>
+
+                <select class="form-select" aria-label="Default select example" id="HardDiskSize" name="hard_disk_size">
+                    <option selected value="0">Open this select menu</option>
+                    <option>120 GB</option>
+                    <option>256 GB</option>
+                    <option>500 GB</option>
+                    <option>1 TB</option>
+                    <option>2 TB</option>
+                    <option>3 TB</option>
+                    <option>4 TB</option>
+                    <option>6 TB</option>
+                    <option>8 TB</option>
+                    <option>10 TB</option>
+                    <option>12 TB</option>
+                    <option>14 TB</option>
+                    <option>16 TB</option>
+                    <option>20 TB</option>
+                    <option>24 TB</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="ProcessorType" class="form-label">Processor</label>
+            
+                <select class="form-select" aria-label="Default select example" id="ProcessorType" name="processor_type">
+                    <option selected value="0">Open this select menu</option>
+                    <option>Intel Core i3</option>
+                    <option>Intel Core i5</option>
+                    <option>Intel Core i7</option>
+                    <option>Intel Core i9</option>
+                    <option>AMD Ryzen 3</option>
+                    <option>AMD Ryzen 5</option>
+                    <option>AMD Ryzen 7</option>
+                    <option>AMD Ryzen 9</option>
+                    <option>Intel Celeron</option>
+                    <option>Intel Pentium</option>
+                    <option>AMD Athlon</option>
+                    <option>AMD A-Series</option>
+                    <option>Qualcomm Snapdragon</option>
+                    <option>Apple M-series</option>
+                    <option>Samsung Exynos</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="ProcessorGeneration" class="form-label">Processor Generation</label>
+            
+                <select class="form-select" aria-label="Default select example" id="ProcessorGeneration" name="processor_generation">
+                    <option selected value="0">Open this select menu</option>
+                    <option>1st Generation</option>
+                    <option>2nd Generation</option>
+                    <option>3rd Generation</option>
+                    <option>4th Generation</option>
+                    <option>5th Generation</option>
+                    <option>6th Generation</option>
+                    <option>7th Generation</option>
+                    <option>8th Generation</option>
+                    <option>9th Generation</option>
+                    <option>10th Generation</option>
+                    <option>11th Generation</option>
+                    <option>12th Generation</option>
+                </select>
+            </div>
+
+            
+            <div class="mb-3">
+                <label for="MotherboardType" class="form-label">Motherboard</label>
+            
+                <select class="form-select" aria-label="Default select example" id="MotherboardType" name="motherboard_type">
+                    <option selected value="0">Open this select menu</option>
+                    <option>ATX</option>
+                    <option>Micro ATX</option>
+                    <option>Mini ITX</option>
+                    <option>Extended ATX (E-ATX)</option>
+                    <option>Thin Mini ITX</option>
+                    <option>Mini-STX</option>
+                    <option>Micro-STX</option>
+                    <option>XL-ATX</option>
+                    <option>BTX</option>
+                    <option>DTX</option>
+                    <option>Mini-DTX</option>
+                    <option>Nano-ITX</option>
+                    <option>Pico-ITX</option>
+                    <option>Flex-ATX</option>
+                    <option>WTX</option>
+                </select>
+            </div>
+
+            
+            <div class="mb-3">
+                <label for="CacheSize" class="form-label">Cache Size</label>
+            
+                <select class="form-select" aria-label="Default select example" id="CacheSize" name="cache_size">
+                    <option selected value="0">Open this select menu</option>
+                    <option>1 MB</option>
+                    <option>2 MB</option>
+                    <option>4 MB</option>
+                    <option>6 MB</option>
+                    <option>8 MB</option>
+                    <option>12 MB</option>
+                    <option>16 MB</option>
+                    <option>20 MB</option>
+                    <option>24 MB</option>
+                    <option>32 MB</option>
+                    <option>64 MB</option>
+                    <option>128 MB</option>
+                    <option>256 MB</option>
+                    <option>512 MB</option>
+                    <option>1 GB</option>
+                </select>
+            </div>
+            
+
+
+            <div class="mb-3">
+                <label for="Cost" class="form-label">Cost</label>
+                <input type="number" class="form-control" id="Cost" name="cost">
+            </div>
+
+            <div class="mb-3">
+                <label for="Qty" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="Qty" name="quantity">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
