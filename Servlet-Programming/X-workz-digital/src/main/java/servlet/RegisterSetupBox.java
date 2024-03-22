@@ -5,40 +5,51 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebFault;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/tvRecharge", loadOnStartup = 1)
-public class TvRecharge extends HttpServlet {
 
-    public TvRecharge(){
-        System.out.println("Tv Recharge object is created");
+@WebServlet(urlPatterns = "/registerSetupBox", loadOnStartup = 1)
+public class RegisterSetupBox extends HttpServlet {
+    public RegisterSetupBox(){
+        System.out.println("registerSetupBox object is created....");
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String customerId = req.getParameter("customerId");
-        String vendor = req.getParameter("vendor");
-        String amount = req.getParameter("amount");
-        String rechargeType = req.getParameter("rechargeType");
+
+
+        String fullname = req.getParameter("fullname");
+        String email = req.getParameter("email");
+        String phone = req.getParameter("phone");
+        String address = req.getParameter("address");
+        String setupBoxType = req.getParameter("setupBoxType");
+        String subscription = req.getParameter("subcription");
         String termCondition = req.getParameter("termCondition");
 
-        System.out.println("customerId: " + customerId);
-        System.out.println("vendor: " + vendor);
-        System.out.println("amount: " + amount);
-        System.out.println("rechargeType: " + rechargeType);
-        System.out.println("termCondition: " + termCondition);
+        System.out.println("Fullname: " + fullname);
+        System.out.println("Email: " + email);
+        System.out.println("Phone: " + phone);
+        System.out.println("Address: " + address);
+        System.out.println("Setup Box Type: " + setupBoxType);
+        System.out.println("Subscription: " + subscription);
+        System.out.println("Term Condition: " + termCondition);
 
-        resp.setContentType("text/html");
+
         PrintWriter writer = resp.getWriter();
+        resp.setContentType("text/html");
 
         String htmlTable = "<table>\n" +
-                "<tr><td>Customer ID</td><td> : " + customerId + "</td></tr>\n" +
-                "<tr><td>Vendor</td><td> : " + vendor + "</td></tr>\n" +
-                "<tr><td>Recharge Amount</td><td> : " + amount + "</td></tr>\n" +
-                "<tr><td>Recharge Type</td><td> : " + rechargeType + "</td></tr>\n" +
+                "<tr><td>Full Name</td><td> : " + fullname + "</td></tr>\n" +
+                "<tr><td>Email</td><td> : " + email + "</td></tr>\n" +
+                "<tr><td>Phone</td><td> : " + phone + "</td></tr>\n" +
+                "<tr><td>Address</td><td> : " + address + "</td></tr>\n" +
+                "<tr><td>Setup Box Type</td><td> : " + setupBoxType + "</td></tr>\n" +
+                "<tr><td>Subscription</td><td> : " + subscription + "</td></tr>\n" +
                 "<tr><td>Terms & Conditions</td><td> : " + (termCondition.equalsIgnoreCase("on") ? "Yes" : "No") + "</td></tr>\n" +
                 "</table>";
+
 
         writer.println("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -112,7 +123,7 @@ public class TvRecharge extends HttpServlet {
                 "    <div class=\"container mt-5 mb-5\">\n" +
                 "        <div class=\"card text-center\">\n" +
                 "            <div class=\"card-header bg-success text-white\">\n" +
-                "              <h4>Your recharge is processing.... </h4>\n" +
+                "              <h4>Your order in process.... </h4>\n" +
                 "            </div> \n" +
                 "            <div class=\"card-body d-flex justify-content-center\">\n" +
                 htmlTable +
@@ -122,6 +133,5 @@ public class TvRecharge extends HttpServlet {
                 "    </div>\n" +
                 "</body>\n" +
                 "</html>");
-
     }
 }

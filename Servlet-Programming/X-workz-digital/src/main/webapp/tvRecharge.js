@@ -58,11 +58,11 @@ function amountValidation(){
     let error = document.getElementById("amountError");
     let amount = element.value == "" ? 0 : parseInt(element.value);
 
-    if(amount >= 10 && amount <= 1000){
+    if(amount >= 10 && amount <= 10000){
         error.innerHTML = "";
         fieldsChecks["amount"] = true;
     }else{
-        error.innerHTML = "Recharge amount shoubld be 10 - 1000";
+        error.innerHTML = "Recharge amount shoubld be 10 - 10,000";
         fieldsChecks["amount"] = false;
     }
     validateAndEnableSubmit()
