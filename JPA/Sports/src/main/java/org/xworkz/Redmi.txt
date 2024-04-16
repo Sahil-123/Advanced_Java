@@ -1,0 +1,4 @@
+
+
+HQL: https://www.tutorialspoint.com/hibernate/hibernate_query_language.htm
+

@@ -79,7 +79,7 @@ public class RegisterSetupBox extends HttpServlet {
                 "</head>\n" +
                 "<body>\n" +
                 "\n" +
-                "  <nav class=\"navbar sticky-top navbar-expand-lg navbar-light\" style=\"background-color: #e3f2fd;\">\n" +
+                "  <nav class=\"navbar sticky-top navbar-expand-lg navbar-light container\" style=\"background-color: #e3f2fd;\">\n" +
                 "    <div class=\"container-fluid\">\n" +
                 "      <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarTogglerDemo03\"\n" +
                 "        aria-controls=\"navbarTogglerDemo03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
@@ -101,7 +101,7 @@ public class RegisterSetupBox extends HttpServlet {
                 "            <a class=\"nav-link\" href=\"about.html\">About</a>\n" +
                 "          </li>\n" +
                 "          <li class=\"nav-item\">\n" +
-                "            <div class=\"dropdown\">\n" +
+                "            <div class=\"dropdown dropstart\">\n" +
                 "              <a class=\" nav-link\" href=\"#\" role=\"button\" id=\"dropdownMenuLink\"\n" +
                 "                data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
                 "                Applications\n" +

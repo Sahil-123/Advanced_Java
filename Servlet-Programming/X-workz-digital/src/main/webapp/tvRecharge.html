@@ -15,7 +15,7 @@
 
 <body>
  
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light container" style="background-color: #e3f2fd;">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
         aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
             <a class="nav-link" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <div class="dropdown">
+            <div class="dropdown dropstart">
               <a class=" nav-link" href="#" role="button" id="dropdownMenuLink"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Applications
@@ -69,7 +69,7 @@
         <div class="mb-3">
             <label for="vendor" class="form-label">Vendor</label>
 
-            <select class="form-select" aria-label="Default select example" id="vendor" onchange="vendorValidation()" name="vendor">
+            <select class="form-select" aria-label="Default select example" id="vendor" onblur="vendorValidation()" name="vendor">
                 <option selected value="0">Open this to select vendor</option>
                 <option>Vendor 1</option>
                 <option>Vendor 2</option>
@@ -90,7 +90,7 @@
         <div class="mb-3">
             <label for="rechargeType" class="form-label">Recharge Type</label>
 
-            <select class="form-select" aria-label="Default select example" id="rechargeType" name="rechargeType" onchange="rechargeTypeValidation()">
+            <select class="form-select" aria-label="Default select example" id="rechargeType" name="rechargeType" onblur="rechargeTypeValidation()">
                 <option selected value="0">Open this to select recharge type</option>
                 <option>Monthly</option>
                 <option>Topup</option>
