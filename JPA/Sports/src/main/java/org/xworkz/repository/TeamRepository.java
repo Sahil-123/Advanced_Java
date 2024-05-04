@@ -52,7 +52,7 @@ public interface TeamRepository {
 
     public List<String> getCountries();
 
-    public  List<List<String>> getCountryAndTeamNameOfAllTeams();
+    public  List<TeamDTO> getCountryAndTeamNameOfAllTeams();
 
     public TeamDTO findTeamByTeamName(String team);
 

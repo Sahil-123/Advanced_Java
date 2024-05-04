@@ -2,10 +2,11 @@ package org.xworkz.dto;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "player")
-public class PlayerDTO {
+public class PlayerDTO implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

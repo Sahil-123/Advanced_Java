@@ -1,9 +1,14 @@
 package org.xworkz.repository;
 
+import org.xworkz.dto.PlayerDTO;
 import org.xworkz.dto.TeamDTO;
 import org.xworkz.util.EMFUtil;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -198,9 +203,9 @@ public class TeamRepositoryImpl implements TeamRepository{
         Integer countOfRecrd = 0;
 
         try {
-            String stringQuery = "select count(t) from TeamDTO t";
+            String stringQuery = "select count(t.id) from TeamDTO t";
             Query query= entityManager.createQuery(stringQuery);
-            countOfRecrd = (Integer) query.getSingleResult();
+            countOfRecrd = ((Long) query.getSingleResult()).intValue();
 
         }catch (Exception e){
             System.out.println("Error while finding count of records in team table"+e);
@@ -360,9 +365,13 @@ public class TeamRepositoryImpl implements TeamRepository{
 
             for(Object[] obj : list){
                 List<String> innerData = new ArrayList<>();
-                for(Object object : obj){
-                    innerData.add((String) object);
-                }
+//                for(Object object : obj){
+////                    innerData.add((String) object);
+//                    System.out.println(object);
+//                }
+                innerData.add((String) obj[0]);
+                innerData.add(((Integer) obj[1]).toString());
+
                 teams.add(innerData);
             }
 
@@ -382,8 +391,8 @@ public class TeamRepositoryImpl implements TeamRepository{
 
         try {
             Query query= entityManager.createNamedQuery("fetchTotalNoOfMatchesByCategoryType");
-            query.setParameter("categoryType",categoryType);
-            count = (Integer) query.getSingleResult();
+            query.setParameter("catogoryType",categoryType);
+            count = ((Long) query.getSingleResult()).intValue();
 
         }catch (Exception e){
             System.out.println("Error while finding sum of no of matches by category type by in team table"+e);
@@ -419,42 +428,227 @@ public class TeamRepositoryImpl implements TeamRepository{
 
     @Override
     public List<TeamDTO> findAllTeams() {
-        return null;
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<TeamDTO> teams = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(TeamDTO.class);
+            Root<TeamDTO> from = criteriaQuery.from(TeamDTO.class);
+            CriteriaQuery select = criteriaQuery.select(from);
+
+            Query query = entityManager.createQuery(select);
+            teams = query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while fetching all teams in team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+        return teams;
     }
 
     @Override
     public List<String> getCountries() {
-        return null;
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<String> countries = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(TeamDTO.class);
+            Root<TeamDTO> from = criteriaQuery.from(TeamDTO.class);
+            CriteriaQuery select = criteriaQuery.select(from.get("country"));
+
+            Query query = entityManager.createQuery(select);
+            countries = query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while fetching countries of all teams in team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+        return countries;
     }
 
     @Override
-    public List<List<String>> getCountryAndTeamNameOfAllTeams() {
-        return null;
+    public List<TeamDTO> getCountryAndTeamNameOfAllTeams() {
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<TeamDTO> data = new ArrayList<>();
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery<TeamDTO> criteriaQuery = criteriaBuilder.createQuery(TeamDTO.class);
+
+            Root<TeamDTO> from = criteriaQuery.from(TeamDTO.class);
+
+            CriteriaQuery select = criteriaQuery.multiselect(from.get("name"),from.get("country"));
+
+            Query query = entityManager.createQuery(select);
+
+            data = query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while fetching country and name of all teams from team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+        return data;
     }
 
     @Override
-    public TeamDTO findTeamByTeamName(String team) {
-        return null;
+    public TeamDTO findTeamByTeamName(String teamName) {
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        TeamDTO teamDTO = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(TeamDTO.class);
+            Root<TeamDTO> from = criteriaQuery.from(TeamDTO.class);
+            CriteriaQuery select = criteriaQuery.select(from).where(criteriaBuilder.equal(from.get("name"),teamName));
+
+            Query query = entityManager.createQuery(select);
+            teamDTO = (TeamDTO) query.getSingleResult();
+
+        }catch (Exception e){
+            System.out.println("Error while fetching Teams by team name from team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+        return teamDTO;
     }
 
     @Override
     public List<TeamDTO> getTeamsByNameMatcher(String teamNameMatcher) {
-        return null;
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<TeamDTO> teamDTOs = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(TeamDTO.class);
+            Root<TeamDTO> from = criteriaQuery.from(TeamDTO.class);
+            CriteriaQuery select = criteriaQuery.select(from).where(criteriaBuilder.like(from.get("name"),teamNameMatcher));
+
+            Query query = entityManager.createQuery(select);
+            teamDTOs = (List<TeamDTO>) query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while fetching Teams by team name matcher from team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+        return teamDTOs;
     }
 
     @Override
     public List<TeamDTO> findTeamsByLessThanTheNumberOfPlayer(Integer numberOfPlayers) {
-        return null;
+
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<TeamDTO> teamDTOs = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(PlayerDTO.class);
+            Root<PlayerDTO> from = criteriaQuery.from(PlayerDTO.class);
+
+            Expression<Long> count = criteriaBuilder.count(from.get("id"));
+            CriteriaQuery select = criteriaQuery.
+                    select(from.get("team_id")).
+                    groupBy(from.get("team_id")).
+                    having(criteriaBuilder.lessThan(count,numberOfPlayers.longValue()));
+
+            Query query = entityManager.createQuery(select);
+            List<Integer> teamIds = (List<Integer>) query.getResultList();
+
+
+            CriteriaBuilder criteriaBuilder1 = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery1 = criteriaBuilder1.createQuery(TeamDTO.class);
+            Root<TeamDTO> fromTeamDTO = criteriaQuery1.from(TeamDTO.class);
+            CriteriaQuery selectTeamDTO = criteriaQuery1.
+                    select(fromTeamDTO).
+                    where(fromTeamDTO.get("id").in(teamIds));
+
+            query = entityManager.createQuery(selectTeamDTO);
+            teamDTOs = (List<TeamDTO>) query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while find Teams By Less Than The Number Of Player from player and Team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+
+        return teamDTOs;
     }
 
     @Override
     public List<TeamDTO> findTeamsByNoOfPlayersInBetween(Integer val1, Integer val2) {
-        return null;
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<TeamDTO> teamDTOs = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(PlayerDTO.class);
+            Root<PlayerDTO> from = criteriaQuery.from(PlayerDTO.class);
+            CriteriaQuery select = criteriaQuery.
+                    select(from.get("team_id")).
+                    groupBy(from.get("team_id")).
+                    having(criteriaBuilder.
+                            between(criteriaBuilder.
+                                    count(from.get("id")),val1.longValue(),val2.longValue()));
+
+            Query query = entityManager.createQuery(select);
+            List<Integer> teamIds = (List<Integer>) query.getResultList();
+
+
+            CriteriaBuilder criteriaBuilder1 = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery1 = criteriaBuilder1.createQuery(TeamDTO.class);
+            Root<TeamDTO> fromTeamDTO = criteriaQuery1.from(TeamDTO.class);
+            CriteriaQuery selectTeamDTO = criteriaQuery1.
+                    select(fromTeamDTO).
+                    where(fromTeamDTO.get("id").in(teamIds));
+
+            query = entityManager.createQuery(selectTeamDTO);
+            teamDTOs = (List<TeamDTO>) query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while find Teams By Less Than The Number Of Player from player and Team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+
+        return teamDTOs;
     }
 
     @Override
     public List<TeamDTO> findTeamsByNameOfTeams(List<String> teamNames) {
-        return null;
+        EntityManager entityManager = EMFUtil.getEntityManager();
+        List<TeamDTO> teamDTOs = null;
+
+        try {
+            CriteriaBuilder criteriaBuilder1 = entityManager.getCriteriaBuilder();
+            CriteriaQuery criteriaQuery1 = criteriaBuilder1.createQuery(TeamDTO.class);
+            Root<TeamDTO> fromTeamDTO = criteriaQuery1.from(TeamDTO.class);
+            CriteriaQuery selectTeamDTO = criteriaQuery1.
+                    select(fromTeamDTO).
+                    where(fromTeamDTO.get("name").in(teamNames));
+
+            Query query = entityManager.createQuery(selectTeamDTO);
+            teamDTOs = (List<TeamDTO>) query.getResultList();
+
+        }catch (Exception e){
+            System.out.println("Error while find Teams By Less Than The Number Of Player from player and Team table"+e);
+        }
+        finally {
+            entityManager.close();
+        }
+
+        return teamDTOs;
     }
 
 }

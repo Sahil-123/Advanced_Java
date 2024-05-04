@@ -1,6 +1,7 @@
 package org.xworkz.dto;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NamedQuery(name = "minOfNumberOfMatches", query = "select min(t.noOfMatches) from TeamDTO t")
 @NamedQuery(name = "getTeamsOfMinNoOfMatches", query = "select t from TeamDTO t where t.noOfMatches =: noOfMatches")
 
-public class TeamDTO {
+public class TeamDTO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,11 @@ public class TeamDTO {
     private Integer noOfMatches;
 
     public TeamDTO() {
+    }
+
+    public TeamDTO(String name, String country) {
+        this.name = name;
+        this.country = country;
     }
 
     public TeamDTO(String name, String country, String captain, String catogoryType, Integer noOfMatches) {
