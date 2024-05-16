@@ -3,7 +3,9 @@ package org.xworkz.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
+import org.xworkz.Beans.Coffee;
 import org.xworkz.pojo.Mug;
 import org.xworkz.pojo.Snake;
 import org.xworkz.pojo.Spoon;
@@ -17,16 +19,26 @@ import java.util.Map;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan("org.xworkz")
+//@ComponentScan("org.xworkz")
+@ComponentScans({
+        @ComponentScan("org.xworkz"),
+        @ComponentScan("org.oracle"),
+})
 public class FlightConfig {
     public FlightConfig(){
         System.out.println("Running FlightConfig....");
     }
 
     @Bean
-    public String getString(){
+    public String name(){
         System.out.println("Getting initializing String...");
-        return "hi i am string";
+        return "I am sahil";
+    }
+
+    @Bean
+    public String mail(){
+        System.out.println("Getting initializing String...");
+        return "sahilnaikwadi123@gmail.com";
     }
 
     @Bean
@@ -87,6 +99,12 @@ public class FlightConfig {
     public Mug getMug(){
         System.out.println("Getting initializing Mug...");
         return new Mug();
+    }
+
+    @Bean
+    public Coffee coffee(){
+        System.out.println("Getting initializing Coffee");
+        return new Coffee();
     }
 
 }
