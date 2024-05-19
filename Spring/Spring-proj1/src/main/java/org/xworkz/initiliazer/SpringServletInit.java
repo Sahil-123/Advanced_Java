@@ -1,4 +1,4 @@
-package org.xworkz.app;
+package org.xworkz.initiliazer;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.xworkz.configuration.FlightConfig;
