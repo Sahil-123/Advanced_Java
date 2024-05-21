@@ -4,4 +4,6 @@ import com.xworkz.dto.Customer;
 
 public interface CustomerRepository {
     public Customer save(Customer customer);
+    public Customer find(Customer customer);
+
 }

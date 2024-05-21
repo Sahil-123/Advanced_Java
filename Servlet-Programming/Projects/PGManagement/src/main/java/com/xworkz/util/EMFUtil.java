@@ -9,7 +9,7 @@ public class EMFUtil {
     static EntityManagerFactory entityManagerFactory;
 
     static {
-        entityManagerFactory= Persistence.createEntityManagerFactory("hotel-management");
+        entityManagerFactory= Persistence.createEntityManagerFactory("hotel");
     }
 
     public static EntityManagerFactory getEntityManagerFactory(){

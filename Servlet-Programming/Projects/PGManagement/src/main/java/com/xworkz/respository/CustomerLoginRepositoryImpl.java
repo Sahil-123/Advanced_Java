@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 public class CustomerLoginRepositoryImpl implements CustomerLoginRepository{
     @Override
     public void save(CustomerLogin customerLogin) {
+        System.out.println("Storing the customer login credentials data in database ....");
+
         EntityManager entityManager= EMFUtil.getEntityManager();
 
         try {

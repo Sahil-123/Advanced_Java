@@ -4,16 +4,17 @@ package com.xworkz.dto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "customer")
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class Customer {
+public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +31,11 @@ public class Customer {
 
     private String address;
 
-    private char[] phone;
+    private String phone;
 
-    private char[] adhar;
+    private String adhar;
 
     @Column(name = "emergency_contact")
-    private char[] emergencyContact;
+    private String  emergencyContact;
 
 }

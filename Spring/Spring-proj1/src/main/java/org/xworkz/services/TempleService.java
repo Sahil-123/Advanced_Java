@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.xworkz.Beans.AppointmentComponent;
 import org.xworkz.Beans.Coffee;
+import org.xworkz.configuration.DBProperties;
 
 
 @Component
@@ -19,6 +20,15 @@ public class TempleService {
 
     @Autowired
     private Coffee coffee;
+
+    @Autowired
+    private DBProperties dbProperties;
+
+    public TempleService(){
+        System.out.println("temple service is created....");
+//        System.out.println(dbProperties.getUsername());
+//        System.out.println("in temple service"+dbProperties.getUsername());
+    }
 
     /*
         @Autowired: follow 2 conditions.

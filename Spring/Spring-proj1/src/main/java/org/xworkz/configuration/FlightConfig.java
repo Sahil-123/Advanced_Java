@@ -1,10 +1,9 @@
 package org.xworkz.configuration;
 
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 import org.xworkz.Beans.Coffee;
 import org.xworkz.pojo.Mug;
 import org.xworkz.pojo.Snake;
@@ -19,7 +18,6 @@ import java.util.Map;
 import java.util.Properties;
 
 @Configuration
-//@ComponentScan("org.xworkz")
 @ComponentScans({
         @ComponentScan("org.xworkz"),
         @ComponentScan("org.oracle"),
@@ -28,6 +26,13 @@ public class FlightConfig {
     public FlightConfig(){
         System.out.println("Running FlightConfig....");
     }
+
+//    @Bean
+//    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+//        PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer();
+//        c.setLocation(new ClassPathResource("db.properties"));
+//        return c;
+//    }
 
     @Bean
     public String name(){
