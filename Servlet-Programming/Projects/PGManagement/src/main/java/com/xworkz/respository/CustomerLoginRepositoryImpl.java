@@ -3,13 +3,15 @@ package com.xworkz.respository;
 import com.xworkz.dto.Customer;
 import com.xworkz.dto.CustomerLogin;
 import com.xworkz.util.EMFUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.EntityManager;
 
+@Slf4j
 public class CustomerLoginRepositoryImpl implements CustomerLoginRepository{
     @Override
     public void save(CustomerLogin customerLogin) {
-        System.out.println("Storing the customer login credentials data in database ....");
+        log.info("Storing the customer login credentials data in database ....");
 
         EntityManager entityManager= EMFUtil.getEntityManager();
 
@@ -21,10 +23,10 @@ public class CustomerLoginRepositoryImpl implements CustomerLoginRepository{
 
             entityManager.getTransaction().commit();
 
-            System.out.println("Storing the customer login credentials data in database is successfully");
+           log.info("Storing the customer login credentials data in database is successfully");
 
         }catch (Exception e){
-            System.out.println("Exception while saving data in customer login credentials.."+ e);
+            log.error("Exception while saving data in customer login credentials.."+ e);
             entityManager.getTransaction().rollback();
         }
 

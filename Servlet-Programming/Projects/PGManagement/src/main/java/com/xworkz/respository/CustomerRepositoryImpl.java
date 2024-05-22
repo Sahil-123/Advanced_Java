@@ -2,6 +2,7 @@ package com.xworkz.respository;
 
 import com.xworkz.dto.Customer;
 import com.xworkz.util.EMFUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -9,11 +10,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+
+@Slf4j
 public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public Customer save(Customer customer) {
-        System.out.println("inside repository "+customer);
+        log.info("customer data persisting process is initiated ");
         EntityManager entityManager= EMFUtil.getEntityManager();
 
         try {
@@ -24,10 +27,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
             entityManager.getTransaction().commit();
 
-            System.out.println("Storing the customer data in database is successfully");
+            log.info("Storing the customer data in database is successfully");
 
         }catch (Exception e){
-            System.out.println("Exception while saving data in customer.."+ e);
+            log.error("Exception while saving data in customer.."+ e);
             entityManager.getTransaction().rollback();
         }
 
@@ -41,7 +44,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public Customer find(Customer customer) {
-        System.out.println("fetching the data from the customer...");
+        log.info("fetching the data from the customer...");
 
         System.out.println("inside repository "+customer);
         EntityManager entityManager= EMFUtil.getEntityManager();
@@ -74,9 +77,11 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 //            entityManager.detach(customer1);
 //            entityManager.getTransaction().commit();
 
+            log.info("customer data fetched successfully");
+
         }catch (Exception e){
-            System.out.println("Exception while fetching data from customer.."+ e);
-            e.printStackTrace();
+            log.info("Exception while fetching data from customer.."+ e);
+//            e.printStackTrace();
         }
 
         finally {

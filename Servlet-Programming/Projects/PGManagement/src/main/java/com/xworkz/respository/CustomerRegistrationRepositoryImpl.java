@@ -3,6 +3,7 @@ package com.xworkz.respository;
 import com.xworkz.dto.Customer;
 import com.xworkz.dto.CustomerLogin;
 import com.xworkz.util.EMFUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -10,11 +11,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+@Slf4j
 public class CustomerRegistrationRepositoryImpl implements CustomerRegistrationRepository {
     @Override
     public void register(Customer customer, CustomerLogin customerLogin) {
         EntityManager entityManager= EMFUtil.getEntityManager();
-        System.out.println("data storing process initiated..");
+        log.info("data storing process initiated..");
 
         try {
             entityManager.getTransaction().begin();
@@ -25,10 +27,10 @@ public class CustomerRegistrationRepositoryImpl implements CustomerRegistrationR
             entityManager.persist(customerLogin);
 
             entityManager.getTransaction().commit();
-            System.out.println("Storing the customer data in database is successfully");
+            log.info("Storing the customer data in database is successfully");
 
         }catch (Exception e){
-            System.out.println("Exception while saving data in customer.."+ e);
+            log.error("Exception while saving data in customer.."+ e);
             entityManager.getTransaction().rollback();
         }
         finally {

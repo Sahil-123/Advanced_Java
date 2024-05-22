@@ -3,6 +3,7 @@ package com.xworkz.service;
 import com.xworkz.dto.Customer;
 import com.xworkz.dto.CustomerLogin;
 import com.xworkz.respository.*;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,10 +11,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@Slf4j
 public class RegisterServiceImpl implements RegisterService{
     @Override
     public void register(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("Customer data is being processed.....");
+        log.error("Customer data is being process.....");
 
         Customer customer = getCutomerDTOFromRequest(request);
         CustomerLogin customerLogin = getCutomerLoginDTOFromRequest(request);
