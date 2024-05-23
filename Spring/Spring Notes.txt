@@ -1,0 +1,85 @@
+
+
+----------------------------------------
+15-May-2024
+
+=========== important need side work =========
+	Jenkins
+	Gradle
+	Junit
+	UCD
+	AWS/GCP/PCF
+	KAFKA
+	Log4j
+	
+
+
+- to create config class we have to annotate the class with @Configuration.
+- for every configuration we have to pass it in getServletConfigClasses method it will pass to spring container.
+
+- configuration class is normal class.
+- getServletConfigClasses method for DispatcherServlet for configurarion.
+- getRootConfigClasses method for spring container configuration before dispatcherServlet initilizing.
+
+
+=> Beans
+@Configuration
+@ComponentScan
+@Component - auto create and register the object and @Component is class level annotation.
+@Bean - manualy create and register the object in config class by using method and @Bean is method level annotation. it is used in config annoted class.
+
+
+
+===> Task
+- 6 class and auto register with spring container.
+- Mannualy register String, char[], LinkedList, Temple, Spoon, Mug, Snake, Map, Properties.
+
+
+Question:
+
+1) how the server know which class is initializer class.
+	In Spring Framework, the server knows which class is the initializer class by looking for a class that implements the WebApplicationInitializer interface. 
+	This interface has a single method, onStartup(), which is called by the server when the application is starting up.
+
+
+2) how the spring containers will be invoked?
+3) can we create multiple initilizer classes.
+
+
+----------------------------------------------------------
+
+
+================= 16-may-2024 ==================
+	@Autowired
+	@Qulifier
+
+	difference between @Component and @Configuration
+	difference between @Component and @Bean
+
+	@ComponentScan and @ComponentScans.
+
+
+=========== Task ============
+	
+	Non
+
+----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
