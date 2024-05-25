@@ -4,6 +4,7 @@
 
 <head>
        <%@ include file="HeaderLinks.jsp" %>
+       <title>Matrimony</title>
 </head>
 <body>
         <%@ include file="Header.jsp" %>

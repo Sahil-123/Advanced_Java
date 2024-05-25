@@ -16,7 +16,7 @@ public class MatrimonyController {
         model.addAttribute("data",matromonyRegisterDTO);
         System.out.println("Matromony register process is initiated.");
         System.out.println(matromonyRegisterDTO);
-        return "RegistrationSuccess.jsp";
+        return "RegistrationSuccess";
     }
 
     @PostMapping("/contact")
@@ -24,7 +24,7 @@ public class MatrimonyController {
         System.out.println("contact page is called.");
         System.out.println(contactDTO);
         model.addAttribute("msg","Thanks for contacting "+contactDTO.getName());
-        return "Contact.jsp";
+        return "Contact";
     }
 
 

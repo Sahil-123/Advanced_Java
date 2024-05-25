@@ -18,7 +18,7 @@
                 }
             </style>
 
-            <title>Servlet Programming</title>
+            <title>Registration</title>
         </head>
 
         <body>

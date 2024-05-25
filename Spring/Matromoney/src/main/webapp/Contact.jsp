@@ -106,8 +106,5 @@
             </div>
 
             <script src="contact.js"></script>
-
-
-
 </body>
 </html>

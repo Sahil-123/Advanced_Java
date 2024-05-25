@@ -30,19 +30,21 @@ function validateAndEnableSubmit(){
 
 
 function nameValidation() {
-  let element = document.getElementById("name");
-  let error = document.getElementById("nameError");
+    let element = document.getElementById("name");
+    let error = document.getElementById("nameError");
 
-  if(element.value.length <=30 && element.value.length >= 3){
-      error.innerHTML = "";
-      data["name"] = true;
-  }else{
-      error.innerHTML = " Invalid Name. Name should be minimum 3 character and maximum 30 character.";
-      data["name"] = false;
-  }
-  validateAndEnableSubmit()
+    let regex = /^[A-Za-z\s]{3,30}$/;
+    console.log(regex.test(element.value));
+
+    if (regex.test(element.value)) {
+        error.innerHTML = "";
+        data["name"] = true;
+    } else {
+        error.innerHTML = "Invalid Name. Name should be minimum 3 characters and maximum 30 characters, with only letters and spaces.";
+        data["name"] = false;
+    }
+    validateAndEnableSubmit();
 }
-
 
 function mobileValidation() {
   let element = document.getElementById("mobile");
