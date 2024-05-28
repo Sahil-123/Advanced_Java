@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.xworkz.configuration.DBProperties;
+import org.xworkz.dto.ComplaintRegisterDTO;
 import org.xworkz.dto.MatromonyRegisterDTO;
 
 @Controller
@@ -36,4 +37,13 @@ public class MarriegeController {
         System.out.println(matromonyRegisterDTO);
         return "Success.jsp";
     }
+
+    @PostMapping("/registerComplaint")
+    public String registerComplaint(ComplaintRegisterDTO complaintRegisterDTO, Model model){
+        model.addAttribute("data",complaintRegisterDTO);
+        System.out.println("Complaint register process is initiated.");
+        System.out.println(complaintRegisterDTO);
+        return "ComplaintSuccess.jsp";
+    }
+
 }

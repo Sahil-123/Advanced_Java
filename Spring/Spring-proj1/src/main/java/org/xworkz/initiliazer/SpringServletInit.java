@@ -30,7 +30,8 @@ public class SpringServletInit extends AbstractAnnotationConfigDispatcherServlet
         System.out.println("running getServletMappings");
         return new String[]{
                 "/send",
-                "/register"
+                "/register",
+                "/registerComplaint"
         };
     }
 }
