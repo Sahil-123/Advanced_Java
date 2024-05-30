@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html lang="en">
 <head>
@@ -39,6 +39,12 @@
 
      <div class="container mb-3">
             <div class="container mt-3 shadow p-3 bg-body rounded formContainer">
+
+            <span class="compulsary">
+                <c:forEach items = "${errors}" var="objectError">
+                   <c:out value = "${objectError.defaultMessage}"/><br>
+                </c:forEach>
+            </span>
 
                 <form action="registerComplaint" method="POST">
                     <div class="d-flex justify-content-center">
@@ -83,7 +89,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary" id="submitButton" disabled>Submit</button>
+                        <button type="submit" class="btn btn-primary" id="submitButton" >Submit</button>
                     </div>
                 </form>
 

@@ -4,6 +4,7 @@ package org.xworkz.configuration;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.xworkz.Beans.Coffee;
 import org.xworkz.pojo.Mug;
 import org.xworkz.pojo.Snake;
@@ -22,6 +23,7 @@ import java.util.Properties;
         @ComponentScan("org.xworkz"),
         @ComponentScan("org.oracle"),
 })
+@EnableWebMvc
 public class FlightConfig {
     public FlightConfig(){
         System.out.println("Running FlightConfig....");

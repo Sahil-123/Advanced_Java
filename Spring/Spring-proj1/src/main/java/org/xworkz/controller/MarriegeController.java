@@ -2,15 +2,17 @@ package org.xworkz.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.xworkz.configuration.DBProperties;
 import org.xworkz.dto.ComplaintRegisterDTO;
 import org.xworkz.dto.MatromonyRegisterDTO;
+
+import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping("/")
@@ -39,11 +41,22 @@ public class MarriegeController {
     }
 
     @PostMapping("/registerComplaint")
-    public String registerComplaint(ComplaintRegisterDTO complaintRegisterDTO, Model model){
-        model.addAttribute("data",complaintRegisterDTO);
-        System.out.println("Complaint register process is initiated.");
-        System.out.println(complaintRegisterDTO);
-        return "ComplaintSuccess.jsp";
+    public String registerComplaint(@Valid ComplaintRegisterDTO complaintRegisterDTO, BindingResult bindingResult, Model model){
+
+        System.out.println("here we go = "+bindingResult.hasErrors() +" "+bindingResult.getAllErrors());
+
+        if(bindingResult.hasErrors()){
+            System.out.println("found error"+bindingResult.hasErrors());
+            bindingResult.getAllErrors().forEach(objectError-> System.out.println(objectError.getDefaultMessage()));
+            model.addAttribute("errors",bindingResult.getAllErrors());
+            return "CustomerComplaint.jsp";
+        }else{
+            model.addAttribute("data",complaintRegisterDTO);
+            System.out.println("Complaint register process is initiated.");
+            System.out.println(complaintRegisterDTO);
+            return "ComplaintSuccess.jsp";
+        }
+
     }
 
 }
