@@ -1,11 +1,11 @@
-<%@ include file="TopLinks.jsp" %>
+<%@ include file="../component/TopLinks.jsp" %>
 
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-         <%@ include file="HeaderLink.jsp" %>
+    <%@ include file="../component/HeaderLink.jsp" %>
 
 
     <style>
@@ -36,7 +36,8 @@
 </head>
 
 <body>
-            <%@ include file="Header.jsp" %>
+      <%@ include file="../component/Header.jsp" %>
+
 
     <div class="container mb-3">
         <div class="container mt-3 shadow p-3 bg-body rounded formContainer">

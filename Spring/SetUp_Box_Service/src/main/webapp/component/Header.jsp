@@ -17,10 +17,10 @@
                     <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="AboutUs.jsp">About</a>
+                    <a class="nav-link" href="pages/AboutUs.jsp">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="CustomerContact.jsp">Contact</a>
+                    <a class="nav-link" href="pages/CustomerContact.jsp">Contact</a>
                   </li>
                   <li class="nav-item">
                     <div class="dropdown dropstart">
@@ -30,7 +30,7 @@
                       </a>
 
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="SetOfBoxServiceRegistery.jsp">Set-Top Box Registration Form</a>
+                        <a class="dropdown-item" href="pages/SetOfBoxServiceRegistery.jsp">Set-Top Box Registration Form</a>
 
                       </ul>
                     </div>

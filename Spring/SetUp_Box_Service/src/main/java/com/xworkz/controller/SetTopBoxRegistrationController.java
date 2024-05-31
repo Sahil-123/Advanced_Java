@@ -28,7 +28,7 @@ public class SetTopBoxRegistrationController {
             bindingResult.getAllErrors().forEach(System.out::println);
             model.addAttribute("errors",bindingResult.getAllErrors());
 
-            return "SetOfBoxServiceRegistery"; // redirect to success page
+            return "pages/SetOfBoxServiceRegistery"; // redirect to success page
         }
 
         return "index"; // redirect to success page
