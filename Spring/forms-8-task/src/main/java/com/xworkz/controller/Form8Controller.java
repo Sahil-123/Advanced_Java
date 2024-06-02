@@ -1,7 +1,6 @@
 package com.xworkz.controller;
 
-import com.xworkz.dto.ProjectAssignmentDTO;
-import com.xworkz.dto.SetTopBoxRegistrationDTO;
+import com.xworkz.dto.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -50,6 +49,54 @@ public class Form8Controller {
             model.addAttribute("errors",bindingResult.getAllErrors());
             return "pages/ProjectManagement";
 
+        }
+
+        return "pages/Success";
+    }
+
+    @PostMapping("/carOwnership/update")
+    public String updateCarOwnership(@Valid CarOwnershipDTO carOwnershipDTO, BindingResult bindingResult, Model model) {
+        System.out.println(carOwnershipDTO);
+        model.addAttribute("dto", carOwnershipDTO);
+        model.addAttribute("msg", "Car ownership information updated successfully");
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("Found error");
+            bindingResult.getAllErrors().forEach(System.out::println);
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "pages/UpdateCarOwnershipInfo";
+        }
+
+        return "pages/Success";
+    }
+
+    @PostMapping("/submitFeedback")
+    public String submitFeedback(@Valid FeedbackDTO feedbackDTO, BindingResult bindingResult, Model model) {
+        System.out.println(feedbackDTO);
+        model.addAttribute("dto", feedbackDTO);
+        model.addAttribute("msg", "Feedback submission is successful");
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("Found error");
+            bindingResult.getAllErrors().forEach(System.out::println);
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "pages/FeedBackForm";
+        }
+
+        return "pages/Success";
+    }
+
+    @PostMapping("/submitServey")
+    public String submitSurvey(@Valid SurveyFormDTO surveyFormDTO, BindingResult bindingResult, Model model) {
+        System.out.println(surveyFormDTO);
+        model.addAttribute("dto", surveyFormDTO);
+        model.addAttribute("msg", "Survey submission is successful");
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("Found error");
+            bindingResult.getAllErrors().forEach(System.out::println);
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "pages/ServeyForm";
         }
 
         return "pages/Success";

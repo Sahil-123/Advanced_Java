@@ -32,6 +32,12 @@
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="pages/SetOfBoxServiceRegistery.jsp">Set-Top Box Registration Form</a>
                         <a class="dropdown-item" href="pages/ProjectManagement.jsp">Project Management Form</a>
+                        <a class="dropdown-item" href="pages/UpdateCarOwnershipInfo.jsp">Update car owner info Form</a>
+                        <a class="dropdown-item" href="pages/FeedBackForm.jsp">Feedback Form</a>
+                        <a class="dropdown-item" href="pages/ApartmentSearch.jsp">Apartment Search Form</a>
+                        <a class="dropdown-item" href="pages/ServeyForm.jsp">Survey Form</a>
+                        <a class="dropdown-item" href="pages/TravelReservationForm.jsp">Travel Reservation Form</a>
+                        <a class="dropdown-item" href="pages/NovelLoginForm.jsp">Novel Login Form</a>
 
                       </ul>
                     </div>
