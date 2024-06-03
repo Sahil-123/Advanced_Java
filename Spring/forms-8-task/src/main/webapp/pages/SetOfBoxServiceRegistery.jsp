@@ -48,7 +48,7 @@
                         </c:forEach>
             </span>
 
-            <form action="register/registerSetTopBox" method="POST">
+            <form action="task/registerSetTopBox" method="POST">
                 <div class="d-flex justify-content-center">
                     <h2>Set-Top Box Registration</h2>
                 </div>
@@ -111,7 +111,7 @@
                     <textarea class="form-control" id="description" rows="3" maxlength="300" name="description"
                         onblur="descriptionValidation()"
                         >
-                        ${dto.description.trim()}
+                        ${dto.description}
 
                         </textarea>
                     <span id="descriptionError" class="error"></span>

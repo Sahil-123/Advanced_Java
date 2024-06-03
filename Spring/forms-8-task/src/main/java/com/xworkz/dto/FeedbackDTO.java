@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -19,9 +20,12 @@ public class FeedbackDTO {
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 30, message = "Name must be between 3 and 30 characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = " Name must contain only letters")
     private String name;
 
     @NotBlank(message = "Email is required")
+    @Email(message = "please enter valid email")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email must be valid")
     private String email;
 
     @NotBlank(message = "Password is required")

@@ -15,10 +15,12 @@ public class TravelReservationDTO {
 
     @NotBlank(message = "Full Name is required")
     @Size(min = 1, max = 100, message = "Full Name must be between 1 and 100 characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters")
     private String fullName;
 
     @NotBlank(message = "Email address is required")
     @Email(message = "Please provide a valid email address")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email must be valid")
     private String emailAddress;
 
     @NotBlank(message = "Tour package selection is required")

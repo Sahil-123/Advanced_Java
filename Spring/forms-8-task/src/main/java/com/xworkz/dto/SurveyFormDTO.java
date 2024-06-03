@@ -17,14 +17,17 @@ public class SurveyFormDTO {
 
     @NotBlank(message = "Email address is required")
     @Email(message = "Please provide a valid email address")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email address must be valid")
     private String emailAddress;
 
     @NotBlank(message = "First Name is required")
     @Size(min = 1, max = 50, message = "First Name must be between 1 and 50 characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "First Name must contain only letters")
     private String firstName;
 
     @NotBlank(message = "Last Name is required")
     @Size(min = 1, max = 50, message = "Last Name must be between 1 and 50 characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Last Name must contain only letters")
     private String lastName;
 
     @NotBlank(message = "State is required")

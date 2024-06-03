@@ -22,7 +22,7 @@ public class Form8Controller {
 
         System.out.println(registrationDTO);
         model.addAttribute("dto",registrationDTO);
-
+        model.addAttribute("msg","Setup Box registration is Successful");
         if (bindingResult.hasErrors()) {
             System.out.println("found error");
             bindingResult.getAllErrors().forEach(System.out::println);
@@ -31,7 +31,7 @@ public class Form8Controller {
             return "pages/SetOfBoxServiceRegistery"; // redirect to success page
         }
 
-        return "index"; // redirect to success page
+        return "pages/Success"; // redirect to success page
     }
 
     @PostMapping("/projectAssignment")

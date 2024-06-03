@@ -17,10 +17,12 @@ public class ApartmentSearchDTO {
 
     @NotBlank(message = "Occupant First Name is required")
     @Size(min = 1, max = 50, message = "Occupant First Name must be between 1 and 50 characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Occupant First Name must contain only letters")
     private String firstName;
 
     @NotBlank(message = "Occupant Last Name is required")
     @Size(min = 1, max = 50, message = "Occupant Last Name must be between 1 and 50 characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Occupant Last Name must contain only letters")
     private String lastName;
 
     @NotBlank(message = "Phone is required")
@@ -29,6 +31,7 @@ public class ApartmentSearchDTO {
 
     @NotBlank(message = "Email is required")
     @Email(message = "Please provide a valid email address")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email must be valid")
     private String email;
 
     @NotBlank(message = "Apartment Size is required")
