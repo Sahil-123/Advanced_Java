@@ -46,12 +46,14 @@
             <br />
 
             <span class="compulsary">
+                <h4>${errorMsg}</h4>
+
                 <c:forEach items="${errors}" var="objectError">
                     "${objectError.defaultMessage}" <br>
                 </c:forEach>
             </span>
 
-            <form action="task/submitFeedback" method="POST">
+            <form action="feedback/submitFeedback" method="POST">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="name" minlength="3" maxlength="30" value="${dto.name}" />

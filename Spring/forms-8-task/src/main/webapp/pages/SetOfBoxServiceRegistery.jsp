@@ -42,18 +42,22 @@
     <div class="container mb-3">
         <div class="container mt-3 shadow p-3 bg-body rounded formContainer">
 
-            <span class="compulsary">
-                        <c:forEach items = "${errors}" var="objectError">
-                           "${objectError.defaultMessage}" <br>
-                        </c:forEach>
-            </span>
 
-            <form action="task/registerSetTopBox" method="POST">
+
+            <form action="setOfBox/registerSetTopBox" method="POST">
                 <div class="d-flex justify-content-center">
                     <h2>Set-Top Box Registration</h2>
                 </div>
 
                 <br />
+
+                <span class="compulsary">
+                                            <h4>${errorMsg}</h4>
+
+                                        <c:forEach items = "${errors}" var="objectError">
+                                           "${objectError.defaultMessage}" <br>
+                                        </c:forEach>
+                            </span>
 
                 <div class="mb-3 mt-2">
                     <label for="name" class="form-label">Customer Name <span class="compulsary">*</span></label>

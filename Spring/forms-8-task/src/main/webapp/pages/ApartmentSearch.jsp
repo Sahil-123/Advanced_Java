@@ -45,6 +45,9 @@
                 <br />
 
                 <span class="compulsary">
+
+                    <h4>${errorMsg}</h4>
+
                     <c:forEach items="${errors}" var="objectError">
                         "${objectError.defaultMessage}" <br>
                     </c:forEach>

@@ -37,18 +37,21 @@
 
     <div class="container mb-3">
         <div class="container mt-3 shadow p-3 bg-body rounded formContainer">
-            <span class="compulsary">
-                <c:forEach items="${errors}" var="objectError">
-                    "${objectError.defaultMessage}" <br>
-                </c:forEach>
-            </span>
 
-            <form action="task/carOwnership/update" method="POST">
+
+            <form action="carOwnership/update" method="POST">
                 <div class="d-flex justify-content-center">
                     <h2>Update Information of Car Ownership</h2>
                 </div>
 
                 <br />
+                <span class="compulsary">
+                                            <h4>${errorMsg}</h4>
+
+                                <c:forEach items="${errors}" var="objectError">
+                                    "${objectError.defaultMessage}" <br>
+                                </c:forEach>
+                            </span>
 
                 <div class="mb-3 mt-2">
                     <label for="firstName" class="form-label">First Name <span class="compulsary">*</span></label>

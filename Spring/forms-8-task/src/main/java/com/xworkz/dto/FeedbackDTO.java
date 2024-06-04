@@ -20,7 +20,7 @@ public class FeedbackDTO {
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 30, message = "Name must be between 3 and 30 characters")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = " Name must contain only letters")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = " Name must contain only letters")
     private String name;
 
     @NotBlank(message = "Email is required")

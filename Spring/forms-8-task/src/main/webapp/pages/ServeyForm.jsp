@@ -43,12 +43,14 @@
             <br />
 
             <span class="compulsary">
+                            <h4>${errorMsg}</h4>
+
                 <c:forEach items="${errors}" var="objectError">
                     "${objectError.defaultMessage}" <br>
                 </c:forEach>
             </span>
 
-            <form action="task/submitServey" method="POST">
+            <form action="survey/submitSurvey" method="POST">
                 <div class="mb-3">
                     <label for="emailAddress" class="form-label">Email Address</label>
                     <input type="email" class="form-control" name="emailAddress" id="emailAddress" value="${dto.emailAddress}" />

@@ -17,12 +17,12 @@ public class ApartmentSearchDTO {
 
     @NotBlank(message = "Occupant First Name is required")
     @Size(min = 1, max = 50, message = "Occupant First Name must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Occupant First Name must contain only letters")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Occupant First Name must contain only letters")
     private String firstName;
 
     @NotBlank(message = "Occupant Last Name is required")
     @Size(min = 1, max = 50, message = "Occupant Last Name must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Occupant Last Name must contain only letters")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Occupant Last Name must contain only letters")
     private String lastName;
 
     @NotBlank(message = "Phone is required")

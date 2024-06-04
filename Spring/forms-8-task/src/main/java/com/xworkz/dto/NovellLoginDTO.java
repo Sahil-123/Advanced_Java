@@ -26,11 +26,12 @@ public class NovellLoginDTO {
 
     @NotBlank(message = "City of is required")
     @Size(min = 1, max = 50, message = "City of must be between 1 and 50 characters")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]*$", message = "City of must not contain special characters")
     private String cityOf;
 
     @NotBlank(message = "Employment is required")
     @Size(min = 1, max = 50, message = "Employment must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Employment contain only letters")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Employment contain only letters")
     private String employment;
 
     @NotBlank(message = "Please select a web server")

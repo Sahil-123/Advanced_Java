@@ -2,6 +2,7 @@ package com.xworkz.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -11,11 +12,12 @@ import java.util.List;
 
 @Getter
 @Setter
+@ToString
 public class TravelReservationDTO {
 
     @NotBlank(message = "Full Name is required")
     @Size(min = 1, max = 100, message = "Full Name must be between 1 and 100 characters")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Name must contain only letters")
     private String fullName;
 
     @NotBlank(message = "Email address is required")
@@ -33,7 +35,7 @@ public class TravelReservationDTO {
     @Min(value = 1, message = "Number of Persons must be at least 1")
     private Integer numberOfPersons;
 
-    @NotNull(message = "Amenities list cannot be null")
+//    @NotNull(message = "Amenities list cannot be null")
     @NotEmpty(message = "Amenities list cannot be empty")
     private List<String> amenities;
 
