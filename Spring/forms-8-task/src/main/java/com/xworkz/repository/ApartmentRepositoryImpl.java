@@ -9,6 +9,6 @@ public class ApartmentRepositoryImpl implements ApartmentRepository{
     @Override
     public boolean find(ApartmentSearchDTO apartmentSearchDTO) {
         System.out.println("Apartment repository find method is invoked for data : "+apartmentSearchDTO);
-        return false;
+        return true;
     }
 }
