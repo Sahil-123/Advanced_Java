@@ -1,0 +1,56 @@
+Tables:
+
+Customers Table
+Column Name	Data Type	Description	Primary Key	Foreign Key
+customer_id (auto)	INT	Unique identifier for each customer	YES
+name	VARCHAR	Name of the customer
+email	VARCHAR	Customer's email address
+billing_address	TEXT	Customer's billing address (optional)
+shipping_address	TEXT	Customer's shipping address (optional)
+
+
+Products Table
+Column Name	Data Type	Description	Primary Key	Foreign Key
+product_id (auto)	INT	Unique identifier for each product	YES
+name	VARCHAR	Name of the product
+description	TEXT	Detailed description of the product (optional)
+unit_price	DECIMAL	Price per unit of the product
+current_stock	INT	Current number of units in stock
+
+
+Orders Table
+Column Name	Data Type	Description	Primary Key	Foreign Key
+order_id (auto)	INT	Unique identifier for each order	YES
+customer_id	INT	Foreign key referencing customer_id in Customers table		Customers(customer_id)
+order_date	DATE	Date the order was placed
+order_status	VARCHAR	Current status of the order (e.g., "Placed", "Processing", "Shipped", "Cancelled")
+total_price	DECIMAL	Total price of the order
+
+
+Order Items Table
+Column Name	Data Type	Description	Primary Key	Foreign Key
+order_item_id (auto)	INT	Unique identifier for each item in an order	YES
+order_id	INT	Foreign key referencing order_id in Orders table		Orders(order_id)
+product_id	INT	Foreign key referencing product_id in Products table		Products(product_id)
+quantity	INT	Quantity of the product ordered
+unit_price	DECIMAL	Price per unit of the product at the time of order (optional)
+
+
+Relationships:
+
+A Customer can have many Orders.
+An Order belongs to one Customer.
+An Order can have many Order Items.
+An Order Item belongs to one Order.
+An Order Item references one Product.
+Benefits of this design:
+
+Captures essential data for order management.
+Enables tracking order status and history.
+Provides a foundation for building additional functionalities.
+Additional Considerations:
+
+You can add more tables to manage things like payments, shipping details, and product categories.
+The unit_price in the Order Items table can be useful to track price changes over time.
+You can implement a shopping cart system with a separate table to manage temporary customer selections before order placement.
+This is a basic design, and you can customize it further based on your specific needs and the complexity of your order management system.
