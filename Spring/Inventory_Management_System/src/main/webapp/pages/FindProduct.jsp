@@ -27,6 +27,14 @@
         .compulsary {
             color: red;
         }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table td, .table th {
+            padding: 8px;
+        }
     </style>
 
     <title>Item Registration</title>
@@ -39,7 +47,7 @@
     <div class="container mb-3">
         <div class="container mt-3 shadow p-3 bg-body rounded formContainer">
             <div class="d-flex justify-content-center">
-                <h2>Item Registration</h2>
+                <h2>Find Item</h2>
             </div>
             <br />
 
@@ -48,13 +56,20 @@
                     "${objectError.defaultMessage}" <br>
                 </c:forEach>
 
-                <h3>${msg}</h3>
             </span>
 
-            <form action="item/save" method="POST">
+            <div class="d-flex justify-content-center">
+                <h4 class="text-danger">${errorMsg}</h4>
+                <span class="text-success">
+                    <h4>${successMsg}</h4>
+                </span>
+            </div>
+
+
+            <form action="product/find" method="GET">
                 <div class="mb-3">
                     <label for="itemId" class="form-label">Item ID</label>
-                    <input type="number" class="form-control" name="itemId" id="itemId" value="${dto.itemId}" />
+                    <input type="number" class="form-control" name="itemId" id="itemId"/>
                 </div>
 
                 <div class="d-flex justify-content-evenly mt-4">
@@ -64,17 +79,39 @@
             </form>
 
             <%-- Display DTO if available --%>
-            <c:if test="${dto != null}">
-                <div class="mt-3">
-                    <h3>DTO Details:</h3>
-                    <p><strong>Item ID:</strong> ${dto.itemId}</p>
-                    <p><strong>Product Name:</strong> ${dto.name}</p>
-                    <p><strong>Description:</strong> ${dto.description}</p>
-                    <p><strong>Unit Price:</strong> ${dto.unitPrice}</p>
-                    <p><strong>Current Stock:</strong> ${dto.currentStock}</p>
-                    <!-- Add more fields here as necessary -->
-                </div>
-            </c:if>
+           <c:if test="${dto != null}">
+                <br>
+               <div class="mt-3 d-flex flex-column justify-content-center">
+                    <div class="mt-3 d-flex justify-content-center">
+                        <h4> Product Details </h4>
+                    </div>
+                     <hr>
+                   <table border="0">
+                       <tr>
+                           <td><strong>Product ID:</strong></td>
+                           <td>${dto.productId}</td>
+                       </tr>
+                       <tr>
+                           <td><strong>Product Name:</strong></td>
+                           <td>${dto.name}</td>
+                       </tr>
+                       <tr>
+                           <td><strong>Description:</strong></td>
+                           <td>${dto.description}</td>
+                       </tr>
+                       <tr>
+                           <td><strong>Unit Price:</strong></td>
+                           <td>${dto.unitPrice}</td>
+                       </tr>
+                       <tr>
+                           <td><strong>Current Stock:</strong></td>
+                           <td>${dto.currentStock}</td>
+                       </tr>
+                       <!-- Add more fields here as necessary -->
+                   </table>
+               </div>
+           </c:if>
+
         </div>
     </div>
 

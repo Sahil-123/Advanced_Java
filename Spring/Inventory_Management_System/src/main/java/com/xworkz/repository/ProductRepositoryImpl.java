@@ -52,6 +52,7 @@ public class ProductRepositoryImpl implements ProductRepository{
 
         try {
             Query query= entityManager.createNamedQuery("findById");
+            query.setParameter("productId", (long) id);
             ProductDto productDto = (ProductDto) query.getSingleResult();
             return Optional.ofNullable(productDto);
 

@@ -28,9 +28,14 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Optional<ProductDto> findById(int id) {
-        System.out.println("service find process is initiated.");
+    public Optional<ProductDto> findById(Integer id) {
 
+        if (id < 0) {
+            // Handle validation error
+            throw new IllegalArgumentException("Item Id should not negative");
+        }
+
+        System.out.println("service find process is initiated : "+id);
         return productRepository.findById(id);
     }
 }

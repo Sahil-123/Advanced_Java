@@ -25,6 +25,7 @@ public class ProductDto {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "product_id")
   private Long productId;
 
   @Column(name = "name")

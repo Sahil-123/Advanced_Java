@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface ProductService {
     public boolean save(RequestProductDto requestProductDto);
 
-    public Optional<ProductDto> findById(int id);
+    public Optional<ProductDto> findById(Integer id);
 }
