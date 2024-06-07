@@ -41,6 +41,20 @@
                       </ul>
                     </div>
                   </li>
+
+                  <li class="nav-item">
+                                      <div class="dropdown dropstart">
+                                        <a class=" nav-link" href="#" role="button" id="dropdownMenuLink"
+                                          data-bs-toggle="dropdown" aria-expanded="false">
+                                          Search
+                                        </a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          <a class="dropdown-item" href="findPages/FindByStartDateApartment.jsp">Find Apartments By Start Date</a>
+                                          <a class="dropdown-item" href="findPages/FindByIdApartment.jsp">Find Apartments By Id</a>
+                                        </ul>
+                                      </div>
+                                    </li>
                 </ul>
               </div>
             </div>

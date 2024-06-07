@@ -1,6 +1,8 @@
 package com.xworkz.configuration;
 
 
+import com.xworkz.utils.ConverterListToString;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,4 +20,11 @@ public class Forms8Configuration {
         return new InternalResourceViewResolver("/",".jsp");
     }
 
+    @Bean
+    public ModelMapper modelMapper(ConverterListToString converterListToString) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.addConverter(converterListToString);
+
+        return modelMapper;
+    }
 }

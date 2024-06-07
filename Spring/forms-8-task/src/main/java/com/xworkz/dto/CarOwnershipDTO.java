@@ -3,41 +3,38 @@ package com.xworkz.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.NotBlank;
 
-
-import javax.validation.constraints.*;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "car_ownership")
 public class CarOwnershipDTO {
 
-    @NotBlank(message = "First Name is required")
-    @Size(min = 1, max = 50, message = "First Name must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "First Name must contain only letters")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank(message = "Last Name is required")
-    @Size(min = 1, max = 50, message = "Last Name must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last Name must contain only letters")
+    @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank(message = "Favorite Sport is required")
+    @Column(name = "favorite_sport")
     private String favoriteSport;
 
-    @NotBlank(message = "Gender is required")
+    @Column(name = "gender")
     private String gender;
 
-    @NotBlank(message = "State Residence is required")
+    @Column(name = "state_residence")
     private String stateResidence;
 
-    @NotNull(message = "At least one car must be selected")
-    private List<String> carOwned;
+    @Column(name = "car_owned")
+    private String carOwned;
 
     public CarOwnershipDTO() {
         System.out.println("CarOwnershipDTO object is created..");

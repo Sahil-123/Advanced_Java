@@ -4,40 +4,36 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.validation.constraints.*;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "project_assignment")
 public class ProjectAssignmentDTO {
 
-    @NotBlank(message = "Project Name is required")
-    @Size(min = 3, max = 30, message = "Project Name must be between 3 and 30 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Project Name must contain only letters")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "project_name")
     private String projectName;
 
-    @NotBlank(message = "Assignment to is required")
+    @Column(name = "assignment_to")
     private String assignmentTo;
 
-    @NotNull(message = "Start Date is required")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @NotNull(message = "End Date is required")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "end_date")
     private LocalDate endDate;
 
-    @NotBlank(message = "Priority is required")
+    @Column(name = "priority")
     private String priority;
 
-    @NotBlank(message = "Description is required")
-    @Size(min = 3, max = 300, message = "Description must be greater than 3 and less than 300 characters")
+    @Column(name = "description")
     private String description;
 
     public ProjectAssignmentDTO() {

@@ -3,43 +3,40 @@ package com.xworkz.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.*;
-import java.util.List;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "survey_form")
 public class SurveyFormDTO {
 
-    @NotBlank(message = "Email address is required")
-    @Email(message = "Please provide a valid email address")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email address must be valid")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "email_address")
     private String emailAddress;
 
-    @NotBlank(message = "First Name is required")
-    @Size(min = 1, max = 50, message = "First Name must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "First Name must contain only letters")
+    @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank(message = "Last Name is required")
-    @Size(min = 1, max = 50, message = "Last Name must be between 1 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Last Name must contain only letters")
+    @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank(message = "State is required")
+    @Column(name = "state")
     private String state;
 
-    @NotEmpty(message = "At least one option must be selected")
-    private List<String> howDidYouHearAboutUs;
+    @Column(name = "how_did_you_hear_about_us")
+    private String howDidYouHearAboutUs;
 
-    @NotBlank(message = "Gender is required")
+    @Column(name = "gender")
     private String gender;
 
+    // Constructor, getter, setter methods
     public SurveyFormDTO() {
-        System.out.println("ContactFormDTO object is created..");
+        System.out.println("SurveyFormDTO object is created..");
     }
 }

@@ -53,7 +53,7 @@
                     </c:forEach>
                 </span>
 
-                <form action="apartment/search" method="POST">
+                <form action="apartment/save" method="POST">
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Occupant First Name</label>
                         <input type="text" class="form-control" name="firstName" id="firstName" minlength="1"

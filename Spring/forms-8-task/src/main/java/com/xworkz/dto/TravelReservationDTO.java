@@ -3,48 +3,45 @@ package com.xworkz.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.*;
-import java.util.List;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "TravelReservation")
 public class TravelReservationDTO {
 
-    @NotBlank(message = "Full Name is required")
-    @Size(min = 1, max = 100, message = "Full Name must be between 1 and 100 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Name must contain only letters")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "full_name")
     private String fullName;
 
-    @NotBlank(message = "Email address is required")
-    @Email(message = "Please provide a valid email address")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email must be valid")
+    @Column(name = "email_address")
     private String emailAddress;
 
-    @NotBlank(message = "Tour package selection is required")
+    @Column(name = "tour_package")
     private String tourPackage;
 
-    @NotBlank(message = "Arrival date is required")
+    @Column(name = "arrival_date")
     private String arrivalDate;
 
-    @NotNull(message = "Number of Persons is required")
-    @Min(value = 1, message = "Number of Persons must be at least 1")
+    @Column(name = "number_of_persons")
     private Integer numberOfPersons;
 
-//    @NotNull(message = "Amenities list cannot be null")
-    @NotEmpty(message = "Amenities list cannot be empty")
-    private List<String> amenities;
+    @Column(name = "amenities")
+    private String amenities;
 
-    @NotBlank(message = "Terms and condition selection is required")
+    @Column(name = "terms_and_condition")
     private String termsAndCondition;
 
-    @Pattern(regexp = "[a-zA-Z0-9]{3,10}", message = "Discount Coupon Code must be alphanumeric and between 3 to 10 characters")
+    @Column(name = "discount_coupon_code")
     private String discountCouponCode;
 
+    // Constructor, getter, setter methods
     public TravelReservationDTO() {
         System.out.println("TravelReservationDTO object is created..");
     }

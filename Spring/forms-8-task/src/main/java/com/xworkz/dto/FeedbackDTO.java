@@ -3,42 +3,37 @@ package com.xworkz.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "feedback")
 public class FeedbackDTO {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @NotBlank(message = "Name is required")
-    @Size(min = 3, max = 30, message = "Name must be between 3 and 30 characters")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = " Name must contain only letters")
+    @Column(name = "name")
     private String name;
 
-    @NotBlank(message = "Email is required")
-    @Email(message = "please enter valid email")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Email must be valid")
+    @Column(name = "email")
     private String email;
 
-    @NotBlank(message = "Password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters long")
+    @Column(name = "password")
     private String password;
 
-    @NotNull(message = "At least one emotion must be selected")
-    private List<String> emotions;
+    @Column(name = "emotions")
+    private String emotions;
 
-    @NotBlank(message = "Satisfaction level is required")
+    @Column(name = "satisfaction")
     private String satisfaction;
 
-    @Size(max = 300, message = "Comments must be less than 300 characters")
+    @Column(name = "comments")
     private String comments;
 
     public FeedbackDTO() {
