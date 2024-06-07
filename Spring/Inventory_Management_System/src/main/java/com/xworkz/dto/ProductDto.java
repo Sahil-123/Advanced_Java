@@ -21,6 +21,9 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "Products")
 @NamedQuery(name = "findById", query = "select product from ProductDto product where product.productId = :productId")
+@NamedQuery(name = "findByCurentStock", query = "select product from ProductDto product where product.currentStock = :currentStock")
+
+
 public class ProductDto {
 
   @Id

@@ -33,7 +33,8 @@
 
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="pages/ProductRegister.jsp">Register Product</a>
-                        <a class="dropdown-item" href="pages/FindProduct.jsp">Find Product</a>
+                        <a class="dropdown-item" href="pages/FindProduct.jsp">Find Product By Id</a>
+                        <a class="dropdown-item" href="pages/FindProductByCurrentStock.jsp">Find Product By Current Stock</a>
 
                       </ul>
                     </div>

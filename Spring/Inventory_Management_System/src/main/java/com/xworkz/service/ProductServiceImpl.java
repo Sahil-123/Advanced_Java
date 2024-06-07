@@ -6,6 +6,7 @@ import com.xworkz.requestDto.RequestProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,5 +38,16 @@ public class ProductServiceImpl implements ProductService{
 
         System.out.println("service find process is initiated : "+id);
         return productRepository.findById(id);
+    }
+
+    @Override
+    public Optional<List<ProductDto>> findByCurrentStock(Integer currentStock) {
+        System.out.println("Service find by current stock process initiated.");
+
+        if(currentStock==null ||  currentStock < 0){
+            throw new IllegalArgumentException("Current Stock should not be negative or empty");
+        }
+
+        return productRepository.findByCurentStock(currentStock);
     }
 }

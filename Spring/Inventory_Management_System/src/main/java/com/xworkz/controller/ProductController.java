@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -69,6 +70,29 @@ public class ProductController {
 
 
         return "pages/FindProduct";
+    }
+
+
+    @GetMapping("/currentStock")
+    public String findProductByCurrentStock(@RequestParam(required = false) Integer currentStock,Model model){
+
+        System.out.println("find product by the current Stock :"+currentStock);
+
+        try{
+            Optional<List<ProductDto>> productDtoOptional = productService.findByCurrentStock(currentStock);
+
+            if(productDtoOptional.isPresent() && !productDtoOptional.get().isEmpty()){
+                model.addAttribute("list",productDtoOptional.get());
+                model.addAttribute("successMsg","Data found successfully for current Stock : "+currentStock);
+            }else{
+                model.addAttribute("errorMsg","Data not found for current Stock : "+currentStock);
+            }
+        }catch (IllegalArgumentException e){
+            model.addAttribute("errorMsg",e.getMessage());
+        }
+
+
+        return "pages/FindProductByCurrentStock";
     }
 
 }
