@@ -11,6 +11,8 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "novell_login")
+@NamedQuery(name = "findByNovellLoginId", query = "select novellLogin from NovellLoginDTO novellLogin where novellLogin.id = :id")
+@NamedQuery(name = "findByEmployment", query = "select novellLogin from NovellLoginDTO novellLogin where novellLogin.employment = :employment")
 public class NovellLoginDTO {
 
     @Id

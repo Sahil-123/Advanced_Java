@@ -1,7 +1,7 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.ApartmentSearchDTO;
-import com.xworkz.exception.InfoExcaption;
+import com.xworkz.exception.InfoException;
 import com.xworkz.requestDto.RequestApartmentSearchDTO;
 import com.xworkz.service.ApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,7 @@ public class ApartmentSearchController {
             }else{
                 model.addAttribute("recordsInfo","No Records found for Start Date : "+startDate);
             }
-        }catch (InfoExcaption e){
+        }catch (InfoException e){
             model.addAttribute("errorMsg",e.getMessage());
         }catch (Exception e){
             e.printStackTrace();
@@ -83,7 +83,7 @@ public class ApartmentSearchController {
             }else{
                 model.addAttribute("recordsInfo","No Records found for Id : "+searchId);
             }
-        }catch (InfoExcaption e){
+        }catch (InfoException e){
             model.addAttribute("errorMsg",e.getMessage());
         }catch (Exception e){
             e.printStackTrace();

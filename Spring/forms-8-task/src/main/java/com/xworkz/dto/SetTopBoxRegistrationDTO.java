@@ -11,6 +11,8 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "set_top_box_registration")
+@NamedQuery(name = "findBySetTopBoxRegistrationId", query = "select setTopBox from SetTopBoxRegistrationDTO setTopBox where setTopBox.id = :id")
+@NamedQuery(name = "findByCountry", query = "select setTopBox from SetTopBoxRegistrationDTO setTopBox where setTopBox.country = :country")
 public class SetTopBoxRegistrationDTO {
 
     @Id

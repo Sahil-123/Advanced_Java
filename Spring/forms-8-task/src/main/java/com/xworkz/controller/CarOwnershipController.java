@@ -1,15 +1,21 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.CarOwnershipDTO;
+import com.xworkz.exception.InfoException;
+import com.xworkz.requestDto.RequestCarOwnershipDTO;
 import com.xworkz.service.CarOwnershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -36,6 +42,73 @@ public class CarOwnershipController {
         }
 
         return "pages/Success";
+    }
+
+    @PostMapping("/save")
+    public String saveCarOwned(@Valid RequestCarOwnershipDTO requestCarOwnershipDTO,
+                                      BindingResult bindingResult,
+                                      Model model){
+
+        model.addAttribute("dto", requestCarOwnershipDTO);
+        if (bindingResult.hasErrors()) {
+            System.out.println("Found error");
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "pages/UpdateCarOwnershipInfo";
+        } else if (!carOwnershipService.save(requestCarOwnershipDTO)) {
+            model.addAttribute("errorMsg", "Something goes wrong submission not successful.");
+            return "pages/UpdateCarOwnershipInfo";
+        }
+
+        model.addAttribute("msg", "Car ownership search data submission is successful");
+        return "pages/Success";
+    }
+
+    @GetMapping("/findCarOwned")
+    public String saveApartmentSearch(@RequestParam(required = false)
+                                      String carOwned,
+                                      Model model){
+
+        System.out.println("find by the carOwned :"+carOwned);
+
+        try{
+            Optional<List<CarOwnershipDTO>> carOwnershipDTOList = carOwnershipService.findByCarOwned(carOwned);
+
+            if(carOwnershipDTOList.isPresent() && !carOwnershipDTOList.get().isEmpty()){
+                model.addAttribute("list",carOwnershipDTOList.get());
+            }else{
+                model.addAttribute("recordsInfo","No Records found for car Owned : "+carOwned);
+            }
+        }catch (InfoException e){
+            model.addAttribute("errorMsg",e.getMessage());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return "findPages/FindByStartDateApartment";
+    }
+
+    @GetMapping("/findId")
+    public String saveApartmentSearch(@RequestParam(required = false)
+                                      Integer searchId,
+                                      Model model){
+
+        System.out.println("find by the Id :"+searchId);
+
+        try{
+            Optional<CarOwnershipDTO> carOwnershipDTO = carOwnershipService.findById(searchId);
+
+            if(carOwnershipDTO.isPresent()){
+                model.addAttribute("dto",carOwnershipDTO.get());
+            }else{
+                model.addAttribute("recordsInfo","No Records found for Id : "+searchId);
+            }
+        }catch (InfoException e){
+            model.addAttribute("errorMsg",e.getMessage());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return "findPages/FindByIdApartment";
     }
 
 }

@@ -1,6 +1,7 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.SurveyFormDTO;
+import com.xworkz.requestDto.RequestSurveyFormDTO;
 import com.xworkz.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,9 @@ public class SurveyController {
     private SurveyService surveyService;
 
     @PostMapping("/submitSurvey")
-    public String submitSurvey(@Valid SurveyFormDTO surveyFormDTO, BindingResult bindingResult, Model model) {
-        System.out.println(surveyFormDTO);
-        model.addAttribute("dto", surveyFormDTO);
+    public String submitSurvey(@Valid RequestSurveyFormDTO requestSurveyFormDTO, BindingResult bindingResult, Model model) {
+        System.out.println(requestSurveyFormDTO);
+        model.addAttribute("dto", requestSurveyFormDTO);
         model.addAttribute("msg", "Survey submission is successful");
 
         if (bindingResult.hasErrors()) {
@@ -29,7 +30,7 @@ public class SurveyController {
             bindingResult.getAllErrors().forEach(System.out::println);
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "pages/ServeyForm";
-        }else if (!surveyService.save(surveyFormDTO)) {
+        }else if (!surveyService.save(requestSurveyFormDTO)) {
             model.addAttribute("errorMsg", "Something goes wrong survey submit not successful.");
             return "pages/ServeyForm";
         }

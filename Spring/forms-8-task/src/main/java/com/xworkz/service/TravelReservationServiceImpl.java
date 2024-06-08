@@ -1,9 +1,15 @@
 package com.xworkz.service;
 
 import com.xworkz.dto.TravelReservationDTO;
+import com.xworkz.exception.InfoException;
 import com.xworkz.repository.TravelReservationRepository;
+import com.xworkz.requestDto.RequestTravelReservationDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TravelReservationServiceImpl implements TravelReservationService {
@@ -11,10 +17,29 @@ public class TravelReservationServiceImpl implements TravelReservationService {
     @Autowired
     private TravelReservationRepository travelReservationRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
-    public boolean reserve(TravelReservationDTO travelReservationDTO) {
-        System.out.println("Travel reservation reserve method is invoked for data: " + travelReservationDTO);
-        // Add validation logic if needed before calling repository
+    public boolean save(RequestTravelReservationDTO requestTravelReservationDTO) {
+        TravelReservationDTO travelReservationDTO = modelMapper.map(requestTravelReservationDTO,TravelReservationDTO.class);
+        System.out.println("Travel reservation data save process...");
         return travelReservationRepository.save(travelReservationDTO);
+    }
+
+    @Override
+    public Optional<TravelReservationDTO> findById(Long id) {
+        if (id == null || id < 0) {
+            throw new InfoException("Please provide a valid ID");
+        }
+        return travelReservationRepository.findById(id);
+    }
+
+    @Override
+    public Optional<List<TravelReservationDTO>> findByTourPackage(String tourPackage) {
+        if (tourPackage == null || tourPackage.isEmpty()) {
+            throw new InfoException("Please provide a valid tour package");
+        }
+        return travelReservationRepository.findByTourPackage(tourPackage);
     }
 }

@@ -52,6 +52,9 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                           <a class="dropdown-item" href="findPages/FindByStartDateApartment.jsp">Find Apartments By Start Date</a>
                                           <a class="dropdown-item" href="findPages/FindByIdApartment.jsp">Find Apartments By Id</a>
+                                          <a class="dropdown-item" href="findPages/FindByIdFeedBackForm.jsp">Find Feedback By Id</a>
+                                          <a class="dropdown-item" href="findPages/FindByNameFeedBackForm.jsp">Find Feedback By name</a>
+
                                         </ul>
                                       </div>
                                     </li>

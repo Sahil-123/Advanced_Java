@@ -1,7 +1,7 @@
 package com.xworkz.service;
 
 import com.xworkz.dto.ApartmentSearchDTO;
-import com.xworkz.exception.InfoExcaption;
+import com.xworkz.exception.InfoException;
 import com.xworkz.repository.ApartmentRepository;
 import com.xworkz.requestDto.RequestApartmentSearchDTO;
 import org.modelmapper.ModelMapper;
@@ -33,7 +33,7 @@ public class ApartmentServiceImpl implements ApartmentService{
     public Optional<ApartmentSearchDTO> findById(Integer id) {
 
         if(id == null || id < 0){
-            throw new InfoExcaption("Please enter search Id to search");
+            throw new InfoException("Please enter search Id to search");
         }
 
         return apartmentRepository.findById((long)id);
@@ -43,7 +43,7 @@ public class ApartmentServiceImpl implements ApartmentService{
     public Optional<List<ApartmentSearchDTO>> findByStartDate(LocalDate date) {
 
         if(date == null){
-            throw new InfoExcaption("Please enter date to search");
+            throw new InfoException("Please enter date to search");
         }
 
         return apartmentRepository.findByStartDate(date);

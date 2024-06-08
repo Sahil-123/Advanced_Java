@@ -114,10 +114,7 @@
                     <label for="description" class="form-label">Description <span class="compulsary">*</span></label>
                     <textarea class="form-control" id="description" rows="3" maxlength="300" name="description"
                         onblur="descriptionValidation()"
-                        >
-                        ${dto.description}
-
-                        </textarea>
+                        >${dto.description}</textarea>
                     <span id="descriptionError" class="error"></span>
                 </div>
 

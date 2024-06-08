@@ -12,6 +12,9 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "feedback")
+@NamedQuery(name = "findByFeedbackId", query = "select feedback from FeedbackDTO feedback where feedback.id = :id")
+@NamedQuery(name = "findByName", query = "select feedback from FeedbackDTO feedback where feedback.name = :name")
+
 public class FeedbackDTO {
 
     @Id

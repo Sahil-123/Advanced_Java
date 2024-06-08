@@ -1,6 +1,7 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.SetTopBoxRegistrationDTO;
+import com.xworkz.requestDto.RequestSetTopBoxRegistrationDTO;
 import com.xworkz.service.SetOfBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,12 @@ public class SetOfBoxController {
 
     @PostMapping("/registerSetTopBox")
     public String registerComplaint(
-            @Valid SetTopBoxRegistrationDTO registrationDTO,
+            @Valid RequestSetTopBoxRegistrationDTO requestSetTopBoxRegistrationDTO,
             BindingResult bindingResult,
             Model model) {
 
-        System.out.println(registrationDTO);
-        model.addAttribute("dto",registrationDTO);
+        System.out.println(requestSetTopBoxRegistrationDTO);
+        model.addAttribute("dto",requestSetTopBoxRegistrationDTO);
         model.addAttribute("msg","Setup Box registration is Successful");
         if (bindingResult.hasErrors()) {
             System.out.println("found error");
@@ -34,7 +35,7 @@ public class SetOfBoxController {
             model.addAttribute("errors",bindingResult.getAllErrors());
 
             return "pages/SetOfBoxServiceRegistery"; // redirect to success page
-        }else if (!setOfBoxService.register(registrationDTO)) {
+        }else if (!setOfBoxService.save(requestSetTopBoxRegistrationDTO)) {
             model.addAttribute("errorMsg", "Something goes wrong registration not successful.");
             return "pages/SetOfBoxServiceRegistery";
         }

@@ -1,6 +1,7 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.ProjectAssignmentDTO;
+import com.xworkz.requestDto.RequestProjectAssignmentDTO;
 import com.xworkz.service.ProjectManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,10 @@ public class ProjectManagementController {
     private ProjectManagementService projectManagementService;
 
     @PostMapping("/assignment")
-    public String assignProject(@Valid ProjectAssignmentDTO projectAssignmentDTO, BindingResult bindingResult, Model model){
+    public String assignProject(@Valid RequestProjectAssignmentDTO requestProjectAssignmentDTO, BindingResult bindingResult, Model model){
 
-        System.out.println(projectAssignmentDTO);
-        model.addAttribute("dto",projectAssignmentDTO);
+        System.out.println(requestProjectAssignmentDTO);
+        model.addAttribute("dto",requestProjectAssignmentDTO);
         model.addAttribute("msg",
                 "Project Assignment is successfull"
         );
@@ -33,7 +34,7 @@ public class ProjectManagementController {
             model.addAttribute("errors",bindingResult.getAllErrors());
             return "pages/ProjectManagement";
 
-        }if (!projectManagementService.assign(projectAssignmentDTO)) {
+        }if (!projectManagementService.save(requestProjectAssignmentDTO)) {
             model.addAttribute("errorMsg", "Something goes wrong assignment not successful.");
             return "pages/ProjectManagement";
         }

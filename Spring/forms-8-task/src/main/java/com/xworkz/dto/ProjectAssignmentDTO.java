@@ -12,6 +12,9 @@ import java.time.LocalDate;
 @ToString
 @Entity
 @Table(name = "project_assignment")
+@NamedQuery(name = "findByProjectAssignmentId", query = "select projectAssignment from ProjectAssignmentDTO projectAssignment where projectAssignment.id = :id")
+@NamedQuery(name = "findByProjectName", query = "select projectAssignment from ProjectAssignmentDTO projectAssignment where projectAssignment.projectName = :projectName")
+
 public class ProjectAssignmentDTO {
 
     @Id

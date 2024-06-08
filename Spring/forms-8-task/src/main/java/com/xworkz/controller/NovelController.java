@@ -1,6 +1,7 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.NovellLoginDTO;
+import com.xworkz.requestDto.RequestNovellLoginDTO;
 import com.xworkz.service.NovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,11 @@ public class NovelController {
     private NovelService novelService;
 
     @PostMapping("/submitNovellLogin")
-    public String submitNovellLogin(@Valid @ModelAttribute("dto") NovellLoginDTO novellLoginDTO,
+    public String submitNovellLogin(@Valid RequestNovellLoginDTO requestNovellLoginDTO,
                                     BindingResult bindingResult, Model model) {
 
-        System.out.println(novellLoginDTO);
-        model.addAttribute("dto", novellLoginDTO);
+        System.out.println(requestNovellLoginDTO);
+        model.addAttribute("dto", requestNovellLoginDTO);
         model.addAttribute("msg", "Novel Login data submission is successful");
 
         if (bindingResult.hasErrors()) {
@@ -33,7 +34,7 @@ public class NovelController {
             bindingResult.getAllErrors().forEach(System.out::println);
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "pages/NovelLoginForm";
-        }else if (!novelService.save(novellLoginDTO)) {
+        }else if (!novelService.save(requestNovellLoginDTO)) {
             model.addAttribute("errorMsg", "Something goes wrong saving not successful.");
             return "pages/NovelLoginForm";
         }

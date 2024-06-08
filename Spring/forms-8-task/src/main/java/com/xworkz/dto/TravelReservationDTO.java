@@ -11,6 +11,10 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "TravelReservation")
+@NamedQueries({
+        @NamedQuery(name = "findById", query = "SELECT reservation FROM TravelReservationDTO reservation WHERE reservation.id = :id"),
+        @NamedQuery(name = "findByTourPackage", query = "SELECT reservation FROM TravelReservationDTO reservation WHERE reservation.tourPackage = :tourPackage")
+})
 public class TravelReservationDTO {
 
     @Id

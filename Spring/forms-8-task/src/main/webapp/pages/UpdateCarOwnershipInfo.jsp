@@ -39,7 +39,7 @@
         <div class="container mt-3 shadow p-3 bg-body rounded formContainer">
 
 
-            <form action="carOwnership/update" method="POST">
+            <form action="carOwnership/save" method="POST">
                 <div class="d-flex justify-content-center">
                     <h2>Update Information of Car Ownership</h2>
                 </div>

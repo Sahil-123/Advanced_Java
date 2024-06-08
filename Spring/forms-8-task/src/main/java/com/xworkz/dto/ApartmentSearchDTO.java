@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "apartment_search")
 @NamedQuery(name = "findByStartDate",query ="select apartment from ApartmentSearchDTO apartment where apartment.startDate = : startDate" )
-@NamedQuery(name = "findById",query ="select apartment from ApartmentSearchDTO apartment where apartment.id = : id" )
+@NamedQuery(name = "findByApartmentSearchId",query ="select apartment from ApartmentSearchDTO apartment where apartment.id = : id" )
 public class ApartmentSearchDTO {
 
     @Id

@@ -51,7 +51,7 @@ public class ApartmentRepositoryImpl implements ApartmentRepository{
 
 
         try {
-            Query query= entityManager.createNamedQuery("findById");
+            Query query= entityManager.createNamedQuery("findByApartmentSearchId");
             query.setParameter("id", id);
             ApartmentSearchDTO productDtoList = (ApartmentSearchDTO) query.getSingleResult();
 

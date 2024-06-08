@@ -1,9 +1,15 @@
 package com.xworkz.service;
 
 import com.xworkz.dto.SetTopBoxRegistrationDTO;
+import com.xworkz.exception.InfoException;
 import com.xworkz.repository.SetOfBoxRepository;
+import com.xworkz.requestDto.RequestSetTopBoxRegistrationDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SetOfBoxServiceImpl implements SetOfBoxService {
@@ -11,10 +17,30 @@ public class SetOfBoxServiceImpl implements SetOfBoxService {
     @Autowired
     private SetOfBoxRepository setOfBoxRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
-    public boolean register(SetTopBoxRegistrationDTO setTopBoxRegistrationDTO) {
-        System.out.println("Set of box register method is invoked for data: " + setTopBoxRegistrationDTO);
-        // Add validation logic if needed before calling repository
+    public boolean save(RequestSetTopBoxRegistrationDTO requestSetTopBoxRegistrationDTO) {
+        SetTopBoxRegistrationDTO setTopBoxRegistrationDTO = modelMapper.map(requestSetTopBoxRegistrationDTO,SetTopBoxRegistrationDTO.class);
+
+        System.out.println("Set top box registration data save process...");
         return setOfBoxRepository.save(setTopBoxRegistrationDTO);
+    }
+
+    @Override
+    public Optional<SetTopBoxRegistrationDTO> findById(Long id) {
+        if (id == null || id < 0) {
+            throw new InfoException("Please provide a valid ID");
+        }
+        return setOfBoxRepository.findById(id);
+    }
+
+    @Override
+    public Optional<List<SetTopBoxRegistrationDTO>> findByCountry(String country) {
+        if (country == null || country.isEmpty()) {
+            throw new InfoException("Please provide a valid country");
+        }
+        return setOfBoxRepository.findByCountry(country);
     }
 }

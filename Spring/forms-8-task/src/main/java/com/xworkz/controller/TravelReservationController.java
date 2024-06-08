@@ -1,6 +1,7 @@
 package com.xworkz.controller;
 
 import com.xworkz.dto.TravelReservationDTO;
+import com.xworkz.requestDto.RequestTravelReservationDTO;
 import com.xworkz.service.TravelReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,11 @@ public class TravelReservationController {
     private TravelReservationService travelReservationService;
 
     @PostMapping("/submitTravelReservation")
-    public String submitTravelReservation(@Valid @ModelAttribute("dto") TravelReservationDTO travelReservationDTO,
+    public String submitTravelReservation(@Valid @ModelAttribute("dto") RequestTravelReservationDTO requestTravelReservationDTO,
                                           BindingResult bindingResult, Model model) {
 
-        System.out.println(travelReservationDTO);
-        model.addAttribute("dto", travelReservationDTO);
+        System.out.println(requestTravelReservationDTO);
+        model.addAttribute("dto", requestTravelReservationDTO);
         model.addAttribute("msg", "Travel Reservation is successful");
 
         if (bindingResult.hasErrors()) {
@@ -33,7 +34,7 @@ public class TravelReservationController {
             bindingResult.getAllErrors().forEach(System.out::println);
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "pages/TravelReservationForm";
-        }else if (!travelReservationService.reserve(travelReservationDTO)) {
+        }else if (!travelReservationService.save(requestTravelReservationDTO)) {
             model.addAttribute("errorMsg", "Something goes wrong reservation not successful.");
             return "pages/TravelReservationForm";
         }

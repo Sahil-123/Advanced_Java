@@ -11,6 +11,8 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "survey_form")
+@NamedQuery(name = "findBySurveyFormId", query = "select surveyForm from SurveyFormDTO surveyForm where surveyForm.id = :id")
+@NamedQuery(name = "findByEmailAddress", query = "select surveyForm from SurveyFormDTO surveyForm where surveyForm.emailAddress = :emailAddress")
 public class SurveyFormDTO {
 
     @Id
