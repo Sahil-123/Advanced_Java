@@ -28,6 +28,14 @@
                     color: red;
                 }
 
+                table {
+                            border-collapse: collapse;
+                        }
+
+                        table td, .table th {
+                            padding: 8px;
+                        }
+
                
     </style>
 
