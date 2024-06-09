@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface TravelReservationService {
     boolean save(RequestTravelReservationDTO reservationDTO);
 
-    Optional<TravelReservationDTO> findById(Long id);
+    Optional<TravelReservationDTO> findById(Integer id);
 
     Optional<List<TravelReservationDTO>> findByTourPackage(String tourPackage);
 }

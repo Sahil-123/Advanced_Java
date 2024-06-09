@@ -14,5 +14,5 @@ public interface CarOwnershipService {
 
     public Optional<CarOwnershipDTO> findById(Integer id);
 
-    public Optional<List<CarOwnershipDTO>> findByCarOwned(String carOwned);
+    public Optional<List<CarOwnershipDTO>> findBySate(String carOwned);
 }

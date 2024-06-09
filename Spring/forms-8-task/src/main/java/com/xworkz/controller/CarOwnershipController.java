@@ -63,20 +63,20 @@ public class CarOwnershipController {
         return "pages/Success";
     }
 
-    @GetMapping("/findCarOwned")
+    @GetMapping("/findState")
     public String saveApartmentSearch(@RequestParam(required = false)
-                                      String carOwned,
+                                      String stateResidence,
                                       Model model){
 
-        System.out.println("find by the carOwned :"+carOwned);
+        System.out.println("find by the carOwned :"+stateResidence);
 
         try{
-            Optional<List<CarOwnershipDTO>> carOwnershipDTOList = carOwnershipService.findByCarOwned(carOwned);
+            Optional<List<CarOwnershipDTO>> carOwnershipDTOList = carOwnershipService.findBySate(stateResidence);
 
             if(carOwnershipDTOList.isPresent() && !carOwnershipDTOList.get().isEmpty()){
                 model.addAttribute("list",carOwnershipDTOList.get());
             }else{
-                model.addAttribute("recordsInfo","No Records found for car Owned : "+carOwned);
+                model.addAttribute("recordsInfo","No Records found for state : "+stateResidence);
             }
         }catch (InfoException e){
             model.addAttribute("errorMsg",e.getMessage());
@@ -84,23 +84,23 @@ public class CarOwnershipController {
             e.printStackTrace();
         }
 
-        return "findPages/FindByStartDateApartment";
+        return "findPages/FindByStateCarOwnershipForm";
     }
 
     @GetMapping("/findId")
     public String saveApartmentSearch(@RequestParam(required = false)
-                                      Integer searchId,
+                                      Integer carOwnerId,
                                       Model model){
 
-        System.out.println("find by the Id :"+searchId);
+        System.out.println("find by the Id :"+carOwnerId);
 
         try{
-            Optional<CarOwnershipDTO> carOwnershipDTO = carOwnershipService.findById(searchId);
+            Optional<CarOwnershipDTO> carOwnershipDTO = carOwnershipService.findById(carOwnerId);
 
             if(carOwnershipDTO.isPresent()){
                 model.addAttribute("dto",carOwnershipDTO.get());
             }else{
-                model.addAttribute("recordsInfo","No Records found for Id : "+searchId);
+                model.addAttribute("recordsInfo","No Records found for Id : "+carOwnerId);
             }
         }catch (InfoException e){
             model.addAttribute("errorMsg",e.getMessage());
@@ -108,7 +108,7 @@ public class CarOwnershipController {
             e.printStackTrace();
         }
 
-        return "findPages/FindByIdApartment";
+        return "findPages/FindByIdCarOwnershipForm";
     }
 
 }

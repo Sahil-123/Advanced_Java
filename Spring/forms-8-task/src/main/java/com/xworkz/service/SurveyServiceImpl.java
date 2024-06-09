@@ -29,11 +29,11 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
-    public Optional<SurveyFormDTO> findById(Long id) {
+    public Optional<SurveyFormDTO> findById(Integer id) {
         if (id == null || id < 0) {
             throw new InfoException("Please provide a valid ID");
         }
-        return surveyRepository.findById(id);
+        return surveyRepository.findById(id.longValue());
     }
 
     @Override

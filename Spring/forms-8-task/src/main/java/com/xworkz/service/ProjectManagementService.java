@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ProjectManagementService {
     boolean save(RequestProjectAssignmentDTO projectAssignmentDTO);
 
-    Optional<ProjectAssignmentDTO> findById(Long id);
+    Optional<ProjectAssignmentDTO> findById(Integer id);
 
     Optional<List<ProjectAssignmentDTO>> findByProjectName(String projectName);
 }

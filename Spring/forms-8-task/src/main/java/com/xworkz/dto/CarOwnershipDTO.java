@@ -12,7 +12,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "car_ownership")
-@NamedQuery(name = "findByCarOwned",query ="select carOwner from CarOwnershipDTO carOwner where carOwner.carOwned = : carOwned" )
+@NamedQuery(name = "findByState",query ="select carOwner from CarOwnershipDTO carOwner where carOwner.stateResidence = : state" )
 @NamedQuery(name = "findByCarOwnerId",query ="select carOwner from CarOwnershipDTO carOwner where carOwner.id = : id" )
 public class CarOwnershipDTO {
 

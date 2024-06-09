@@ -13,5 +13,5 @@ public interface CarOwnershipRepository {
 
     public Optional<CarOwnershipDTO> findById(Long id);
 
-    public Optional<List<CarOwnershipDTO>> findByCarOwned(String carOwned);
+    public Optional<List<CarOwnershipDTO>> findBySate(String state);
 }

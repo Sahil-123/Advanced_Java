@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface SetOfBoxService {
     boolean save(RequestSetTopBoxRegistrationDTO setTopBoxRegistrationDTO);
 
-    Optional<SetTopBoxRegistrationDTO> findById(Long id);
+    Optional<SetTopBoxRegistrationDTO> findById(Integer id);
 
     Optional<List<SetTopBoxRegistrationDTO>> findByCountry(String country);
 }

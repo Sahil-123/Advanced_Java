@@ -43,12 +43,12 @@ public class CarOwnershipServiceImpl implements CarOwnershipService {
     }
 
     @Override
-    public Optional<List<CarOwnershipDTO>> findByCarOwned(String carOwned) {
+    public Optional<List<CarOwnershipDTO>> findBySate(String state) {
 
-        if(carOwned == null || carOwned.length() < 3 || carOwned.length() > 30){
-            throw new InfoException("Please enter valid to Car owner name");
+        if(state == null || state.isEmpty()){
+            throw new InfoException("Please enter valid to State name");
         }
 
-        return carOwnershipRepository.findByCarOwned(carOwned);
+        return carOwnershipRepository.findBySate(state);
     }
 }

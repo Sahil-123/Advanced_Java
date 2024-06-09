@@ -29,11 +29,11 @@ public class SetOfBoxServiceImpl implements SetOfBoxService {
     }
 
     @Override
-    public Optional<SetTopBoxRegistrationDTO> findById(Long id) {
+    public Optional<SetTopBoxRegistrationDTO> findById(Integer id) {
         if (id == null || id < 0) {
             throw new InfoException("Please provide a valid ID");
         }
-        return setOfBoxRepository.findById(id);
+        return setOfBoxRepository.findById(id.longValue());
     }
 
     @Override

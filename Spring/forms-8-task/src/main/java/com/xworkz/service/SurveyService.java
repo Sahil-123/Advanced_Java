@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface SurveyService {
     boolean save(RequestSurveyFormDTO surveyFormDTO);
 
-    Optional<SurveyFormDTO> findById(Long id);
+    Optional<SurveyFormDTO> findById(Integer id);
 
     Optional<List<SurveyFormDTO>> findByEmailAddress(String emailAddress);
 }

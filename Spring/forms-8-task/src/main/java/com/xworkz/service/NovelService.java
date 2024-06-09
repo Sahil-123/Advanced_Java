@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface NovelService {
     boolean save(RequestNovellLoginDTO novellLoginDTO);
 
-    Optional<NovellLoginDTO> findById(Long id);
+    Optional<NovellLoginDTO> findById(Integer id);
 
     Optional<List<NovellLoginDTO>> findByEmployment(String employment);
 }

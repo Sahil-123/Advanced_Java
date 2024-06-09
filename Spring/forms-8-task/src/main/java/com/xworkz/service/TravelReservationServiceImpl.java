@@ -28,11 +28,11 @@ public class TravelReservationServiceImpl implements TravelReservationService {
     }
 
     @Override
-    public Optional<TravelReservationDTO> findById(Long id) {
+    public Optional<TravelReservationDTO> findById(Integer id) {
         if (id == null || id < 0) {
             throw new InfoException("Please provide a valid ID");
         }
-        return travelReservationRepository.findById(id);
+        return travelReservationRepository.findById(id.longValue());
     }
 
     @Override

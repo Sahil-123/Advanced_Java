@@ -77,16 +77,16 @@ public class CarOwnershipRepositoryImpl implements CarOwnershipRepository {
     }
 
     @Override
-    public Optional<List<CarOwnershipDTO>> findByCarOwned(String carOwned) {
-        System.out.println("Apartment Repository find process is initiated using carOwned."+ carOwned);
+    public Optional<List<CarOwnershipDTO>> findBySate(String state) {
+        System.out.println("Apartment Repository find process is initiated using state."+ state);
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
 
         try {
-            Query query= entityManager.createNamedQuery("findByCarOwned");
-            query.setParameter("carOwned", carOwned);
+            Query query= entityManager.createNamedQuery("findByState");
+            query.setParameter("state", state);
             List<CarOwnershipDTO> carOwnershipDTOList = (List<CarOwnershipDTO>) query.getResultList();
 
             System.out.println(carOwnershipDTOList);

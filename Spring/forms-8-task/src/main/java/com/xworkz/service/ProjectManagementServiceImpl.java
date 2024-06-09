@@ -29,11 +29,11 @@ public class ProjectManagementServiceImpl implements ProjectManagementService {
     }
 
     @Override
-    public Optional<ProjectAssignmentDTO> findById(Long id) {
+    public Optional<ProjectAssignmentDTO> findById(Integer id) {
         if (id == null || id < 0) {
             throw new InfoException("Please provide a valid ID");
         }
-        return projectManagementRepository.findById(id);
+        return projectManagementRepository.findById((long)id);
     }
 
     @Override

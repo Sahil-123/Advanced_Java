@@ -29,11 +29,11 @@ public class NovelServiceImpl implements NovelService {
     }
 
     @Override
-    public Optional<NovellLoginDTO> findById(Long id) {
+    public Optional<NovellLoginDTO> findById(Integer id) {
         if (id == null || id < 0) {
             throw new InfoException("Please provide a valid ID");
         }
-        return novelRepository.findById(id);
+        return novelRepository.findById((long)id);
     }
 
     @Override
