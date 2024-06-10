@@ -29,23 +29,23 @@ public class CarOwnershipServiceImpl implements CarOwnershipService {
 
     @Override
     public boolean save(RequestCarOwnershipDTO requestCarOwnershipDTO) {
-        CarOwnershipDTO carOwnershipDTO = modelMapper.map(requestCarOwnershipDTO,CarOwnershipDTO.class);
+        CarOwnershipDTO carOwnershipDTO = modelMapper.map(requestCarOwnershipDTO, CarOwnershipDTO.class);
         return carOwnershipRepository.save(carOwnershipDTO);
     }
 
     @Override
     public Optional<CarOwnershipDTO> findById(Integer id) {
-        if(id == null || id < 0){
+        if (id == null || id < 0) {
             throw new InfoException("Please enter search Id to search");
         }
 
-        return carOwnershipRepository.findById((long)id);
+        return carOwnershipRepository.findById((long) id);
     }
 
     @Override
     public Optional<List<CarOwnershipDTO>> findBySate(String state) {
 
-        if(state == null || state.isEmpty()){
+        if (state == null || state.isEmpty()) {
             throw new InfoException("Please enter valid to State name");
         }
 

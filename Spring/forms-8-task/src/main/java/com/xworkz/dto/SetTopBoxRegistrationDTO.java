@@ -13,6 +13,8 @@ import javax.persistence.*;
 @Table(name = "set_top_box_registration")
 @NamedQuery(name = "findBySetTopBoxRegistrationId", query = "select setTopBox from SetTopBoxRegistrationDTO setTopBox where setTopBox.id = :id")
 @NamedQuery(name = "findByCountry", query = "select setTopBox from SetTopBoxRegistrationDTO setTopBox where setTopBox.country = :country")
+@NamedQuery(name = "deleteBySetTopBoxRegistrationId", query = "DELETE FROM SetTopBoxRegistrationDTO setTopBox WHERE setTopBox.id= :id ")
+
 public class SetTopBoxRegistrationDTO {
 
     @Id

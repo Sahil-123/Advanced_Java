@@ -29,6 +29,22 @@ public class SetOfBoxServiceImpl implements SetOfBoxService {
     }
 
     @Override
+    public boolean update(Integer id,RequestSetTopBoxRegistrationDTO requestSetTopBoxRegistrationDTO) {
+        SetTopBoxRegistrationDTO setTopBoxRegistrationDTO = modelMapper.map(requestSetTopBoxRegistrationDTO,SetTopBoxRegistrationDTO.class);
+
+        System.out.println("Set top box update data save process...");
+        return setOfBoxRepository.update(id,setTopBoxRegistrationDTO);
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        if (id == null || id < 0) {
+            throw new InfoException("Please provide a valid ID");
+        }
+        return setOfBoxRepository.delete(id);
+    }
+
+    @Override
     public Optional<SetTopBoxRegistrationDTO> findById(Integer id) {
         if (id == null || id < 0) {
             throw new InfoException("Please provide a valid ID");

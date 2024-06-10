@@ -1,6 +1,7 @@
 package com.xworkz.repository;
 
 import com.xworkz.dto.SetTopBoxRegistrationDTO;
+import com.xworkz.exception.InfoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +28,41 @@ public class SetOfBoxRepositoryImpl implements SetOfBoxRepository {
             transaction.commit();
             return true;
         } catch (PersistenceException e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            entityManager.close();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean update(Integer id,SetTopBoxRegistrationDTO setTopBoxRegistrationDTO) {
+        return true;
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        System.out.println("Repository update process is initiated using id." + id);
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        try {
+            transaction.begin();
+            Query query = entityManager.createNamedQuery("deleteBySetTopBoxRegistrationId");
+            query.setParameter("id", id.longValue());
+            if(query.executeUpdate() <= 0){
+                throw new InfoException("No records deleted for id: "+id);
+            }
+            transaction.commit();
+            return true;
+        }
+        catch (InfoException e){
+            throw e;
+        }
+        catch (PersistenceException e) {
             e.printStackTrace();
             transaction.rollback();
         } finally {

@@ -42,9 +42,15 @@
     <div class="container mb-3">
         <div class="container mt-3 shadow p-3 bg-body rounded formContainer">
 
+                <c:choose>
+                  <c:when test="${edit}">
+                    <form action="setOfBox/updateSetTopBox?id=${id}" method="POST">
+                  </c:when>
+                  <c:otherwise>
+                    <form action="setOfBox/registerSetTopBox" method="POST">
+                  </c:otherwise>
+                </c:choose>
 
-
-            <form action="setOfBox/registerSetTopBox" method="POST">
                 <div class="d-flex justify-content-center">
                     <h2>Set-Top Box Registration</h2>
                 </div>
@@ -52,12 +58,12 @@
                 <br />
 
                 <span class="compulsary">
-                                            <h4>${errorMsg}</h4>
-
-                                        <c:forEach items = "${errors}" var="objectError">
-                                           "${objectError.defaultMessage}" <br>
-                                        </c:forEach>
-                            </span>
+                    <h4>${errorMsg}</h4>
+                    <c:forEach items = "${errors}" var="objectError">
+                        "${objectError.defaultMessage}"
+                        <br>
+                    </c:forEach>
+                </span>
 
                 <div class="mb-3 mt-2">
                     <label for="name" class="form-label">Customer Name <span class="compulsary">*</span></label>
@@ -73,6 +79,7 @@
                     <input type="email" class="form-control" name="email" id="email"
                     onblur="emailValidation()"
                     value="${dto.email}"
+                    <c:if test="${edit}">readonly</c:if>
                     />
                     <span id="emailError" class="error"></span>
                 </div>
@@ -132,7 +139,14 @@
 
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary" id="submitButton" >
-                        Submit
+                        <c:choose>
+                          <c:when test="${edit}">
+                            Edit
+                          </c:when>
+                          <c:otherwise>
+                            Submit
+                          </c:otherwise>
+                        </c:choose>
                     </button>
                 </div>
             </form>

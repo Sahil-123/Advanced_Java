@@ -81,6 +81,13 @@
             </div>
         </div>
 
+        <c:if test="${deleteMessage.length() > 0}">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>  ${deleteMessage} </strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </c:if>
+
 <c:if test="${list != null}">
     <br>
     <div class="mt-3 d-flex flex-column justify-content-center">
@@ -97,6 +104,8 @@
                     <th scope="col"><strong>Country</strong></th>
                     <th scope="col"><strong>Description</strong></th>
                     <th scope="col"><strong>Terms & Conditions</strong></th>
+                    <th scope="col"> Edit </th>
+                    <th scope="col"> Delete </th>
                 </tr>
             </thead>
             <c:forEach items="${list}" var="setTopBox">
@@ -107,6 +116,8 @@
                     <td>${setTopBox.country}</td>
                     <td>${setTopBox.description}</td>
                     <td>${setTopBox.termsAndCondition}</td>
+                    <td><a href="setOfBox/registerSetTopBox?id=${setTopBox.id}&edit=edit"><i class="fa-solid fa-pen-to-square" style="color:blue"></i></a></td>
+                    <td><a href="setOfBox/deleteByIdForCountry?country=${country}&id=${setTopBox.id}"><i class="fa-solid fa-trash" style="color:red"></i></a></td>
                 </tr>
             </c:forEach>
         </table>
